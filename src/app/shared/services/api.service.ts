@@ -30,10 +30,14 @@ export class ApiService {
 
   }
 
+  getAllProducts() {
+    return this.http.get(this.url + 'products')
 
+  }
 
-  // postDefects(defects: any) {
-  //   return this.http.post('http://localhost:3100/defects', defects);
-  // }
+  getAllVariety() {
+    return this.http.get(this.url + 'variety')
+  }
+
 }
 
