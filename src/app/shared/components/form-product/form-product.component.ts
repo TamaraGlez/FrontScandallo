@@ -11,6 +11,7 @@ import { Ivariety } from '../../interfaces/ivariety';
 export class FormProductComponent implements OnInit {
   public listProducts!: Iproducts[]
   public listVariety!: Ivariety[]
+  public listVarietyFiltered!: Ivariety[];
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
@@ -23,5 +24,13 @@ export class FormProductComponent implements OnInit {
       this.listVariety = [...results];
       console.log(this.listVariety);
     });
+
+   
+  }
+
+  setCode(value:string) {
+   
+    this.listVarietyFiltered = this.listVariety.filter((variety) => variety.productRef === value)
+    
   }
 }

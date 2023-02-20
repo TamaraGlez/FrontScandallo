@@ -36,7 +36,7 @@ export class ApiService {
   }
 
   getAllVariety() {
-    return this.http.get(this.url + 'variety')
+    return this.http.get(this.url + 'varieties')
   }
 
 }
