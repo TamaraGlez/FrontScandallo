@@ -7,6 +7,8 @@ const routes: Routes = [
   {path:"about", loadChildren: () => import('./pages/about/about.module').then((m)=>m.AboutModule)},
   {path:"login", loadChildren: () => import('./pages/login/login.module').then((m)=>m.LoginModule)},
   {path:"register", loadChildren: () => import('./pages/register/register.module').then((m)=>m.RegisterModule)},
+  {path:"home", loadChildren: () => import('./pages/home/home.module').then((m)=>m.HomeModule)},
+  {path:":room", loadChildren: () => import('./pages/room/room.module').then((m)=>m.RoomModule)}
 
 
 
