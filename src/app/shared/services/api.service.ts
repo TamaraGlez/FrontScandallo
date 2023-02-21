@@ -39,5 +39,9 @@ export class ApiService {
     return this.http.get(this.url + 'varieties')
   }
 
+  getAllProviders() {
+    return this.http.get(this.url + 'providers')
+  }
+
 }
 

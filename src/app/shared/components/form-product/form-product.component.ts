@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { Iproducts } from '../../interfaces/iproducts';
+import { Iproviders } from '../../interfaces/iproviders';
 import { Ivariety } from '../../interfaces/ivariety';
 
 @Component({
@@ -11,6 +12,7 @@ import { Ivariety } from '../../interfaces/ivariety';
 export class FormProductComponent implements OnInit {
   public listProducts!: Iproducts[]
   public listVariety!: Ivariety[]
+  public listProviders!: Iproviders[]
   public listVarietyFiltered!: Ivariety[];
   constructor(private api: ApiService) {}
 
@@ -25,6 +27,10 @@ export class FormProductComponent implements OnInit {
       console.log(this.listVariety);
     });
 
+    this.api.getAllProviders().subscribe((results: any) => {
+      this.listProviders = [...results];
+      console.log(this.listProviders);
+    });
    
   }
 
