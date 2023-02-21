@@ -1,3 +1,5 @@
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from 'src/app/shared/services/api.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,12 +15,15 @@ import { FormsModule } from '@angular/forms';
     FooterComponent
   ],
   imports: [
+
   
   BrowserModule,
     AppRoutingModule, 
-    FormsModule
+    FormsModule,
+    HttpClientModule
+
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 
