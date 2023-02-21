@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,13 @@ export class ApiService {
     return this.http.get(this.url + 'defects')
 
   }
+  getAllEscandallos():Observable<any> {
+    return this.http.get(this.url + 'escandallos')
+  }
 
+  getAllProducts():Observable<any> {
+    return this.http.get(this.url + 'products')
+  }
   // postDefects(defects: any) {
   //   return this.http.post('http://localhost:3100/defects', defects);
   // }
