@@ -1,6 +1,9 @@
+import { Iusers, Login } from './../interfaces/iusers';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Idefects } from '../interfaces/idefects';
+import { Observable } from 'rxjs';
+import { CookieService } from "ngx-cookie-service";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +21,7 @@ export class ApiService {
   id: number = 0;
 
   public url = 'http://escandallos-back.vercel.app/'
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cookies: CookieService) { }
 
   getAllDefects() {
     return this.http.get(this.url + 'defects')
@@ -30,10 +33,15 @@ export class ApiService {
 
   }
 
+  loginUser(users: Iusers): Observable<Login>{
+    return this.http.post<Login>(this.url + 'users', users)
+  }
+  setToken(token:string){
+    this.cookies.set("token", token)
+  }
 
-
-  // postDefects(defects: any) {
-  //   return this.http.post('http://localhost:3100/defects', defects);
-  // }
+  getToken() {
+    return this.cookies.get("token");
+  }
 }
 
