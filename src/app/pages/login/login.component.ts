@@ -16,7 +16,7 @@ export class LoginComponent {
     const user: Iusers = {name:'', password:'',};
 
     this.api.loginUser(user).subscribe((res:Login) => {
-      // localStorage.setItem('token', res.token);
+      localStorage.setItem('token', res.token);
 
     });
   }
