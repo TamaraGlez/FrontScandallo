@@ -7,11 +7,9 @@ const routes: Routes = [
   {path:"about", loadChildren: () => import('./pages/about/about.module').then((m)=>m.AboutModule)},
   {path:"login", loadChildren: () => import('./pages/login/login.module').then((m)=>m.LoginModule)},
   {path:"register", loadChildren: () => import('./pages/register/register.module').then((m)=>m.RegisterModule)},
-  {path:"guide", loadChildren: () => import('./pages/guide/guide.module').then((m)=>m.GuideModule)},
 
-
-
-
+  {path:"home", loadChildren: () => import('./pages/home/home.module').then((m)=>m.HomeModule)},
+  {path:":room", loadChildren: () => import('./pages/room/room.module').then((m)=>m.RoomModule)},
 
   
 ];
@@ -20,4 +18,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
