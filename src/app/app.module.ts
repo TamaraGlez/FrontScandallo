@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './shared/components/nav/nav.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+<<<<<<< HEAD
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -22,6 +23,24 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     HttpClientModule
 
+=======
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    NavComponent,
+    FooterComponent,
+    
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule, 
+    ReactiveFormsModule,
+    FormsModule
+    
+>>>>>>> 20092168d6466e760a033762b498d17e08ae6815
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

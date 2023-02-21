@@ -1,8 +1,35 @@
-<div class="login">
+<!-- <div class="login">
     <form class="form" method="post">
       <h2>Login</h2>
       <input type="text" name="Username" placeholder="Username" required="required">
       <input type="password" name="password" placeholder="Password" required="required">
       <button type="submit">Log in</button>
     </form>
-  </div>
+  </div> -->
+
+<div class="h-screen bg-gray-400 flex justify-center items-center w-screen">
+  <form>
+    <div class="bg-gray-900  px-10 py-8 rounded-xl w-screen shadow-md max-w-sm">
+      <div class="space-y-4">
+        <h1 class="text-center text-2xl font-semibold text-gray-400">LOGIN</h1>
+        <div>
+          <label for="name" class="block mb-1 text-gray-400 font-semibold">Nombre Usuario</label>
+          <input type="text" class="bg-gray-200 px-4 py-2 outline-none rounded-md w-full" />
+        </div>
+        <div>
+          <label for="email" class="block mb-1 text-gray-400 font-semibold">Email</label>
+          <input type="text" class="bg-gray-200 px-4 py-2 outline-none rounded-md w-full" />
+        </div>
+        <div>
+          <label for="password" class="block mb-1 text-gray-400 font-semibold">Contraseña</label>
+          <input type="password" required="require" class="bg-gray-200 px-4 py-2 outline-none rounded-md w-full" />
+        </div>
+      </div>
+      <button type="submit" required="require"
+      class="mt-4 w-full bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide
+      hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms]
+      transition-[color,box-shadow] hover:text-teal-500">
+        ENTRAR</button>
+    </div>
+  </form>
+</div>
