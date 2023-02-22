@@ -19,9 +19,9 @@ export class LoginComponent {
     localStorage.setItem('token', res.token);
       console.log(res)
     });
-
-
   }
+
+
 }
 
 

@@ -1,6 +1,6 @@
 import { Iusers, Login } from './../interfaces/iusers';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Idefects } from '../interfaces/idefects';
 import { Observable } from 'rxjs';
 import { CookieService } from "ngx-cookie-service";
@@ -36,7 +36,15 @@ export class ApiService {
   }
 
   loginUser(users: Iusers): Observable<Login>{
-    return this.http.post<Login>(this.url + 'users', users)
+    return this.http.post<Login>(this.url + 'users', users,{
+      headers: new HttpHeaders ({
+        Authorization: 'Bearer ' + localStorage.getItem ('token'),
+
+
+      }),
+    });
+
+
   }
   setToken(token:string){
     this.cookies.set("token", token)
