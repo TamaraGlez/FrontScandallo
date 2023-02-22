@@ -9,13 +9,13 @@ const routes: Routes = [
     path:"", component: DashboardComponent,
   }, 
   {
+    path:"nuevo",component:FormProductComponent
+  },
+  {
     path: ":id", component: EscandalloFormEditComponent
   },
   {
     path: "edit/:id", component: EscandalloFormEditComponent
-  },
-  {
-    path:"nuevo",component:FormProductComponent
   }
 ];
 

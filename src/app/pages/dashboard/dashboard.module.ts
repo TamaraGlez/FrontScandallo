@@ -13,7 +13,7 @@ import { FormProductComponent } from 'src/app/shared/components/form-product/for
   declarations: [
     DashboardComponent,
     EscandalloFormEditComponent,
-    PopupComponent
+    PopupComponent,
     FormProductComponent
   ],
   imports: [

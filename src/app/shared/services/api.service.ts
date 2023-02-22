@@ -30,9 +30,6 @@ export class ApiService {
     return this.http.get(this.url + 'defects')
   }
 
-  getAllProducts():Observable<any> {
-    return this.http.get(this.url + 'products')
-  }
   // postDefects(defects: any) {
   //   return this.http.post('http://localhost:3100/defects', defects);
   // }
@@ -48,7 +45,7 @@ export class ApiService {
   getEscandalloById(escandalloId: string):Observable<any> {
     return this.http.get(this.url + 'escandallos/' + escandalloId)
   }
-  getEscandallosBy(){}
+
   createEscandallo(newEscandallo:IEscandallo):Observable<any> {
     return this.http.post(this.url + 'escandallos/create', newEscandallo)
   }
@@ -65,7 +62,7 @@ export class ApiService {
 
   }
 
-  getAllProducts() {
+  getAllProducts():Observable<any> {
     return this.http.get(this.url + 'products')
 
   }
