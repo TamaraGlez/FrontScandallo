@@ -74,14 +74,14 @@ export class DashboardComponent implements OnInit {
     });
 
   }
-  
+
 
   filter(productCode: string) {
     if (this.filters.includes(productCode)) {
       this.filters = this.filters.filter( filter => filter !== productCode)
     } else { this.filters = [ ...this.filters, productCode ] }
     console.log(this.filters);
-    
+
     if (this.filters.length === 0) {
       this.listFiltered = this.listEscandallos
     } else {
@@ -94,8 +94,8 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  clearFilter(){ 
-    this.filters = [] 
+  clearFilter(){
+    this.filters = []
     this.listFiltered = this.listEscandallos
   }
 
@@ -117,12 +117,12 @@ export class DashboardComponent implements OnInit {
   updateList(id: string){
     console.log(id);
     console.log(this.listFiltered);
-    
+
     this.listFiltered = this.listFiltered.filter( escandallo => {
-      return escandallo._id !== id 
+      return escandallo._id !== id
     })
     console.log(this.listFiltered);
   }
-  
+
 }
 
