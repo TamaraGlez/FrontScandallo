@@ -30,9 +30,7 @@ export class ApiService {
     return this.http.get(this.url + 'defects')
   }
 
-  getAllProducts():Observable<any> {
-    return this.http.get(this.url + 'products')
-  }
+
   // postDefects(defects: any) {
   //   return this.http.post('http://localhost:3100/defects', defects);
   // }
@@ -40,11 +38,11 @@ export class ApiService {
 
 
   //*-------------ESCANDALLOS--------------------------------------------
-  
+
   getAllEscandallos():Observable<any> {
     return this.http.get(this.url + 'escandallos')
   }
-  
+
   getEscandalloById(escandalloId: string):Observable<any> {
     return this.http.get(this.url + 'escandallos/' + escandalloId)
   }
@@ -59,13 +57,11 @@ export class ApiService {
     return this.http.delete(this.url + 'escandallos/' + escandalloId)
   }
 
-
   getDefectsById(id: number) {
     return this.http.get(this.url + id);
 
   }
-
-  getAllProducts() {
+  getAllProducts():Observable<any> {
     return this.http.get(this.url + 'products')
 
   }
