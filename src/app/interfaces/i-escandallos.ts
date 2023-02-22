@@ -1,4 +1,5 @@
 export interface IEscandallo {
+  _id: string,
   warehouse: string;
   userName: string;
   ref: number;
