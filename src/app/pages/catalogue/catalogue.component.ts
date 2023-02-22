@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { Idefects } from 'src/app/shared/interfaces/idefects';
 
 @Component({
   selector: 'app-catalogue',
@@ -7,7 +8,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./catalogue.component.css'],
 })
 export class CatalogueComponent implements OnInit {
-  public listDefects!: any[];
+  public listDefects!: Idefects[];
 
   constructor(private api: ApiService) {}
 
@@ -17,7 +18,7 @@ export class CatalogueComponent implements OnInit {
       console.log(this.listDefects);
     });
 
-    // this.api.getData().subscribe((resultado: any)=> this.data =([...resultado]))}
-    // console.log(data)
   }
 }
+
+
