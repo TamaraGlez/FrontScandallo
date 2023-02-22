@@ -11,13 +11,23 @@ export class LoginComponent {
 
   constructor(private api: ApiService ) {}
 
-  loginUser (): void {
+  loginUser (password:string, username:string): void {
 
-    const user: Iusers = {name:'', password:'',};
-
+    const user: Iusers = {userName:username, password:password,};
+    console.log(user)
     this.api.loginUser(user).subscribe((res:Login) => {
-      localStorage.setItem('token', res.token);
-
+    localStorage.setItem('token', res.token);
+      console.log(res)
     });
+
+
   }
 }
+
+
+
+
+
+
+
+

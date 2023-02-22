@@ -5,7 +5,7 @@
         <h1 class="text-center text-2xl font-semibold text-gray-400">LOGIN</h1>
         <div>
           <label for="name" class="block mb-1 text-gray-400 font-semibold">Nombre Usuario</label>
-          <input type="text" required class="bg-gray-200 px-4 py-2 outline-none rounded-md w-full" />
+          <input #username type="text" required class="bg-gray-200 px-4 py-2 outline-none rounded-md w-full" />
         </div>
         <!-- <div>
           <label for="email" class="block mb-1 text-gray-400 font-semibold">Email</label>
@@ -13,10 +13,10 @@
         </div> -->
         <div>
           <label for="password" class="block mb-1 text-gray-400 font-semibold">Contraseña</label>
-          <input type="password" required class="bg-gray-200 px-4 py-2 outline-none rounded-md w-full" />
+          <input #password type="password" required class="bg-gray-200 px-4 py-2 outline-none rounded-md w-full" />
         </div>
       </div>
-      <button type="submit" (click)="loginUser()"
+      <button type="button" (click)="loginUser(password.value, username.value)"
       class="mt-4 w-full bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide
       hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms]
       transition-[color,box-shadow] hover:text-teal-500">

@@ -20,8 +20,10 @@ export class ApiService {
 
   id: number = 0;
 
-  public url = 'http://escandallos-back.vercel.app/'
+  public url = 'https://escandallos-back.vercel.app/'
   constructor(private http: HttpClient, private cookies: CookieService) { }
+
+
 
   getAllDefects() {
     return this.http.get(this.url + 'defects')

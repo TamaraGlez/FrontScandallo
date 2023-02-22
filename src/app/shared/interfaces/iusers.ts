@@ -1,5 +1,5 @@
 export interface Iusers {
-  name: string;
+  userName: string;
   password: string;
 }
 
