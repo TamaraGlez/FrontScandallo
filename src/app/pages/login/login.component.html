@@ -1,26 +1,22 @@
-<div class="h-full min-h-screen p-3 flex justify-center items-center">
-  <form>
-    <div class="bg-gray-900  px-10 py-8 rounded-xl shadow-md max-w-sm">
-      <div class="space-y-4">
-        <h1 class="text-center text-2xl font-semibold text-gray-400">LOGIN</h1>
-        <div>
-          <label for="name" class="block mb-1 text-gray-400 font-semibold">Nombre Usuario</label>
-          <input type="text" class="bg-gray-200 px-4 py-2 outline-none rounded-md w-full" />
-        </div>
-        <div>
-          <label for="email" class="block mb-1 text-gray-400 font-semibold">Email</label>
-          <input type="text" class="bg-gray-200 px-4 py-2 outline-none rounded-md w-full" />
-        </div>
-        <div>
-          <label for="password" class="block mb-1 text-gray-400 font-semibold">Contraseña</label>
-          <input type="password" required="require" class="bg-gray-200 px-4 py-2 outline-none rounded-md w-full" />
-        </div>
-      </div>
-      <button type="submit" required="require"
-      class="mt-4 w-full bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide
+<div class="absolute h-full left-0 z-0 w-screen p-4 bg-gray-900 flex justify-center">
+  <form class="flex flex-col w-60 pt-20 ">
+
+   <div class="text-center items-center">
+    <h1 class="text-center text-3xl font-semibold text-gray-400 mb-10">LOGIN</h1>
+    <div>
+      <label for="name" class="block mb-2 text-gray-400 font-semibold">Usuario</label>
+      <input type="text" class="bg-gray-200 px-4 py-2 outline-none rounded-md" />
+    </div>
+   
+    <div class="mt-2">
+      <label for="password" class="block mb-2 text-gray-400 font-semibold">Contraseña</label>
+      <input type="password" required="require" class="bg-gray-200 px-4 py-2 outline-none rounded-md" />
+    </div>
+    <button type="submit" class=" w-52 mt-7 py-2 bg-teal-500 text-gray-900  font-bold rounded-md text-lg tracking-wide
       hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms]
       transition-[color,box-shadow] hover:text-teal-500">
-        ENTRAR</button>
-    </div>
+      ENTRAR</button>
+   </div>
+
   </form>
 </div>
