@@ -1,0 +1,21 @@
+<section #popup class="w-64 h-40 border border-red-600 bg-slate-100 rounded flex flex-col justify-center items-center">
+  <div>
+    <!-- titulo -->
+    <!-- <h2>Eliminar {{info.ref}} - {{info.product}}</h2> -->
+    <h2>{{popupInfo.title}} {{popupInfo.info.name}} - {{popupInfo.info.ref}}</h2>
+  </div>
+  <div>
+    <!-- body -->
+    <p>{{popupInfo.body}}</p>
+  </div>
+  <div class="flex gap-3">
+    <button 
+    class="bg-red-600 text-white rounded w-24 hover:bg-red-900"
+    (click)="popupInfo.cancel()"
+    >CANCELAR</button>
+    <button 
+    class="bg-teal-500 text-white rounded w-24 hover:bg-teal-900"
+    (click)="popupInfo.action(popupInfo.info._id)"
+    >ACEPTAR</button>
+  </div>
+</section>
