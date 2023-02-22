@@ -2,23 +2,32 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
 import { IEscandallo } from 'src/app/interfaces/i-escandallos';
+import { Idefects } from '../interfaces/idefects';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  // public url= 'http://escandallos-back.vercel.app/'
-  public url= 'http://localhost:3000/'
+
+  public url= 'http://escandallos-back.vercel.app/'
+  // public url= 'http://localhost:3000/'
+
+  defect: Idefects = {
+
+    title: '',
+    image: '',
+    description: ''
+
+  }
+
+  id: number = 0;
 
   constructor(private http: HttpClient) { }
 
   getAllDefects() {
     return this.http.get(this.url + 'defects')
-
-  }
-  getAllEscandallos():Observable<any> {
-    return this.http.get(this.url + 'escandallos')
   }
 
   getAllProducts():Observable<any> {
@@ -32,6 +41,10 @@ export class ApiService {
 
   //*-------------ESCANDALLOS--------------------------------------------
   
+  getAllEscandallos():Observable<any> {
+    return this.http.get(this.url + 'escandallos')
+  }
+  
   getEscandalloById(escandalloId: string):Observable<any> {
     return this.http.get(this.url + 'escandallos/' + escandalloId)
   }
@@ -44,6 +57,25 @@ export class ApiService {
   }
   deleteEscandallo(escandalloId: string):Observable<any> {
     return this.http.delete(this.url + 'escandallos/' + escandalloId)
+  }
+
+
+  getDefectsById(id: number) {
+    return this.http.get(this.url + id);
+
+  }
+
+  getAllProducts() {
+    return this.http.get(this.url + 'products')
+
+  }
+
+  getAllVariety() {
+    return this.http.get(this.url + 'varieties')
+  }
+
+  getAllProviders() {
+    return this.http.get(this.url + 'providers')
   }
 
 
