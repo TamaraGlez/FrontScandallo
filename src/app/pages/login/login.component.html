@@ -1,3 +1,4 @@
+
 <div class="fixed min-h-screen h-full left-0 z-40 mb-14 w-screen p-4 bg-gray-900 flex justify-center scroll-">
   <form class="flex flex-col w-60">
 
@@ -5,14 +6,15 @@
     <h1 class="text-center text-3xl font-semibold text-gray-400 mb-10">LOGIN</h1>
     <div>
       <label for="name" class="block mb-2 text-gray-400 font-semibold">Usuario</label>
-      <input type="text" class="bg-gray-200 px-4 py-2 outline-none rounded-md" />
+      <input #username type="text" class="bg-gray-200 px-4 py-2 outline-none rounded-md" />
     </div>
    
     <div class="mt-2">
       <label for="password" class="block mb-2 text-gray-400 font-semibold">Contraseña</label>
-      <input type="password" required="require" class="bg-gray-200 px-4 py-2 outline-none rounded-md" />
+      <input #password type="password" required="require" class="bg-gray-200 px-4 py-2 outline-none rounded-md" />
     </div>
-    <button type="submit" class=" w-52 mt-7 py-2 bg-teal-500 text-gray-900  font-bold rounded-md text-lg tracking-wide
+    <button type="button" (click)="loginUser(password.value, username.value)"
+    class=" w-52 mt-7 py-2 bg-teal-500 text-gray-900  font-bold rounded-md text-lg tracking-wide
       hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms]
       transition-[color,box-shadow] hover:text-teal-500">
       ENTRAR</button>
