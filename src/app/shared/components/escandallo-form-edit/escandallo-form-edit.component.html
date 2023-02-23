@@ -1,1 +1,104 @@
-<p>escandallo-form-edit works!</p>
+<section class="w-screen border p-5">
+  <h1>ESCANDALLO DATOS</h1>
+
+  <div class="mt-5">
+    <H2>INFO:</H2>
+    <p>{{escandalloToEdit.ref}}</p>
+    <p>{{escandalloToEdit.product}}</p>
+    <p>{{escandalloToEdit.variety}}</p>
+    <p>{{escandalloToEdit.provider}}</p>
+  </div>
+
+  <div class="mt-5">
+    <!-- BRIX -->
+    <div>
+      <div class="flex gap-3">
+        <p>Brix</p>
+        <button>+</button>
+        <button (click)="activeEdit()">Edit</button>
+        <button (click)="activeEdit()">Cancel</button>
+        <button (click)="activeEdit()">Guardar</button>
+      </div>
+      <input type="text" inputmode="numeric" />
+      <div class="flex gap-3">
+        <ng-container *ngFor="let data of escandalloToEdit.data.brix">
+          <span *ngIf="!editIsActive">{{data}}</span>
+          <input *ngIf="editIsActive" type="text" inputmode="numeric" value="{{data}}"
+          class="w-10 text-center">
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- PENETROMIA -->
+    <div class="mt-5">
+      <div class="flex gap-3">
+        <p>Penetromia</p>
+        <button>+</button>
+        <button (click)="activeEdit()">Edit</button>
+      </div>
+      <input type="text" inputmode="numeric" />
+      <div class="flex gap-3">
+        <ng-container *ngFor="let data of escandalloToEdit.data.brix">
+          <span *ngIf="!editIsActive">{{data}}</span>
+          <input *ngIf="editIsActive" type="text" inputmode="numeric" value="{{data}}"
+          class="w-10 text-center">
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- Calibres -->
+    <div class="mt-5">
+      <div>
+        <p>Calibre 1:</p>
+        <ng-container *ngFor="let cal of calibers">
+          <button class="border rounded m-3">{{cal}}</button>
+        </ng-container>
+        <input type="range" name="cal1" id="cal1" max="100" min="0" step="10" value="50">
+      </div>
+      <div>
+        <p>Calibre 2:</p>
+        <ng-container *ngFor="let cal of calibers">
+          <button class="border rounded m-3">{{cal}}</button>
+        </ng-container>
+        <input type="range" name="cal1" id="cal1" max="100" min="0" step="10" value="50">
+      </div>
+
+      <!-- Defectos -->
+      <div class="mt-5">
+        <p>Defectos:</p>
+        <select name="defects">
+          <option>Selecciona del listado</option>
+        </select>
+        <div>
+          <p>Seleccionados</p>
+          <p>Seleccionados</p>
+          <p>Seleccionados</p>
+        </div>
+      </div>
+
+      <!-- Commentarios -->
+      <div class="mt-5">
+        <p>Observaciones</p>
+        <textarea 
+        name="comments" id="comments" cols="50" rows="5" 
+        placeholder="Otras observaciones" value="{{escandalloToEdit.comments}}">
+      </textarea>
+      </div>
+
+      <!-- Fotos -->
+      <div class="mt-5">
+        <input type="file" capture="environment" accept="image/*">>
+        <div>
+
+        </div>
+      </div>
+
+      <div class="mt-5 flex gap-4">
+        <button type="button">CANCEL</button>
+        <button type="submit">GUARDAR</button>
+      </div>
+    </div>
+    
+  </div>
+
+</section>

@@ -4,6 +4,9 @@ import { IEscandallo } from 'src/app/interfaces/i-escandallos';
 import { Idefects } from '../interfaces/idefects';
 import { Observable } from 'rxjs';
 
+import { Iproducts } from '../interfaces/iproducts';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +17,8 @@ export class ApiService {
     Authorization: 'Bearer ' + localStorage.getItem ('token'),
   })}
 
-  // public url= 'http://escandallos-back.vercel.app/'
-  public url= 'http://localhost:3000/'
+  public url= 'http://escandallos-back.vercel.app/'
+  // public url= 'http://localhost:3000/'
 
   defect: Idefects = {
 
@@ -27,17 +30,11 @@ export class ApiService {
 
   id: number = 0;
 
+
   constructor(private http: HttpClient) { }
 
 
-  getAllDefects() {
-    return this.http.get(this.url + 'defects')
-  }
-
-  // postDefects(defects: any) {
-  //   return this.http.post('http://localhost:3100/defects', defects);
-  // }
-
+  constructor(private http: HttpClient) { }
 
 
   //*-------------ESCANDALLOS--------------------------------------------
@@ -46,10 +43,10 @@ export class ApiService {
     return this.http.get(this.url + 'escandallos', this.headers)
   }
 
-  getEscandalloById(escandalloId: string):Observable<any> {
+  getEscandalloById(escandalloId: any):Observable<any> {
     return this.http.get(this.url + 'escandallos/' + escandalloId)
   }
-  getEscandallosBy(){}
+
   createEscandallo(newEscandallo:IEscandallo):Observable<any> {
     return this.http.post(this.url + 'escandallos/create', newEscandallo)
   }
@@ -60,17 +57,37 @@ export class ApiService {
     return this.http.delete(this.url + 'escandallos/' + escandalloId)
   }
 
+
+  //*--------------- DEFECTS ---------------------------------------------
+
+  getAllDefects(): Observable<Idefects[]> {
+    return this.http.get<Idefects[]>(this.url + 'defects')
+  }
+  
   getDefectsById(id: number) {
     return this.http.get(this.url + id);
-
   }
-  getAllProducts():Observable<any> {
-    return this.http.get(this.url + 'products')
 
+
+    //*--------------- PRODUCTS ---------------------------------------------
+
+  getAllProducts():Observable<Iproducts[]> {
+    return this.http.get<Iproducts[]>(this.url + 'products')
   }
+
+  getProductByCode(code:string): Observable<Iproducts> {
+    return this.http.get<Iproducts>( this.url + 'products/' + code)
+  }
+
+
+    //*--------------- VARIETIES ---------------------------------------------
+
+
   getAllVariety() {
     return this.http.get(this.url + 'varieties')
   }
+
+    //*--------------- PROVIDERS ---------------------------------------------
 
   getAllProviders() {
     return this.http.get(this.url + 'providers')

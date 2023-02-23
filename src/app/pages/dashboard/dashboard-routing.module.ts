@@ -12,6 +12,9 @@ const routes: Routes = [
     path:"nuevo",component:FormProductComponent
   },
   {
+    path:"nuevo",component:FormProductComponent
+  },
+  {
     path: ":id", component: EscandalloFormEditComponent
   },
   {
