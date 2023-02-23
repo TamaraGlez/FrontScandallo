@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IEscandallo } from 'src/app/interfaces/i-escandallos';
 import { Idefects } from '../interfaces/idefects';
 import { Observable } from 'rxjs';
@@ -10,6 +10,9 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
+  public headers = {headers: new HttpHeaders ({
+    Authorization: 'Bearer ' + localStorage.getItem ('token'),
+  })}
 
   // public url= 'http://escandallos-back.vercel.app/'
   public url= 'http://localhost:3000/'
@@ -40,7 +43,7 @@ export class ApiService {
   //*-------------ESCANDALLOS--------------------------------------------
 
   getAllEscandallos():Observable<any> {
-    return this.http.get(this.url + 'escandallos')
+    return this.http.get(this.url + 'escandallos', this.headers)
   }
 
   getEscandalloById(escandalloId: string):Observable<any> {

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CookieService } from "ngx-cookie-service";
 import { Iusers, Login } from './../interfaces/iusers';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -14,26 +13,35 @@ export class AuthService {
     // public url= 'http://escandallos-back.vercel.app/'
     public url= 'http://localhost:3000/'
 
-  constructor(private http: HttpClient, private cookies: CookieService) { }
+  constructor(private http: HttpClient) { }
 
+  public headers = new HttpHeaders ({
+    Authorization: 'Bearer ' + localStorage.getItem ('token'),
+  })
   
-  loginUser(users: Iusers): Observable<Login>{
-    return this.http.post<Login>(this.url + 'users', users,{
-      headers: new HttpHeaders ({
-        Authorization: 'Bearer ' + localStorage.getItem ('token'),
-
-      }),
-    });
-
+  loginUser(users: Iusers): Observable<any>{
+    return this.http.post<any>(this.url + 'users', users );
   }
-  setToken(token:string){
-    this.cookies.set("token", token)
+
+  logOut(){
+    localStorage.clear();
   }
+
+  register(user: Iusers){
+    return this.http.post(`${this.url}/users/register`, user);
+  }
+
+  // setToken(token:string){
+  //   this.cookies.set("token", token)
+  // }
 
   getToken() {
-    return this.cookies.get("token");
+    return localStorage.getItem('token');
   }
 
-
+  getUser(){
+    let user = JSON.parse(String(localStorage.getItem('user')));
+    return user;
+  }
 
 }
