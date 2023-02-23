@@ -53,26 +53,34 @@
         <ng-container *ngFor="let cal of calibers">
           <button class="border rounded m-3">{{cal}}</button>
         </ng-container>
-        <input type="range" name="cal1" id="cal1" max="100" min="0" step="10" value="50">
+        <input type="range" name="cal1" id="cal1" max="100" min="0" step="10" value="50" oninput="this.nextElementSibling.value = this.value">
+        <output> 50 </output>
       </div>
       <div>
         <p>Calibre 2:</p>
         <ng-container *ngFor="let cal of calibers">
           <button class="border rounded m-3">{{cal}}</button>
         </ng-container>
-        <input type="range" name="cal1" id="cal1" max="100" min="0" step="10" value="50">
+        <input type="range" name="cal1" id="cal1" max="100" min="0" step="10" value="50" oninput="this.nextElementSibling.value = this.value">
+        <output> 50 </output>
       </div>
 
       <!-- Defectos -->
       <div class="mt-5">
         <p>Defectos:</p>
-        <select name="defects">
-          <option>Selecciona del listado</option>
+        <select name="defects" [(ngModel)] = "selecteDefect">
+          <option value="">Selecciona del listado</option>
+          <option *ngFor="let defect of listDefects" value="{{defect.title}}"> {{defect.title}} </option>
         </select>
         <div>
-          <p>Seleccionados</p>
-          <p>Seleccionados</p>
-          <p>Seleccionados</p>
+          <button (click)="saveSelecction()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Seleccionar</button>
+          <p>Seleccionados:</p>
+          <p> {{messageDefect}} </p>
+          <ul *ngFor="let selection of selecteDefects; let indexOfSelection = index">
+            <li class="flex flex-row"> {{selection}} </li>
+            <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-0.2 px-2 rounded " 
+            (click)="deleteDefect(selection, indexOfSelection)"> X </button>
+          </ul>
         </div>
       </div>
 

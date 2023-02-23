@@ -12,7 +12,7 @@ import { FormProductComponent } from 'src/app/shared/components/form-product/for
 @NgModule({
   declarations: [
     DashboardComponent,
-    EscandalloFormEditComponent,
+    // EscandalloFormEditComponent,
     PopupComponent,
     FormProductComponent
   ],
