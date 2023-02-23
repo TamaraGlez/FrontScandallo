@@ -13,7 +13,7 @@
       <label for="password" class="block mb-2 text-gray-400 font-semibold">Contraseña</label>
       <input #password type="password" required="require" class="bg-gray-200 px-4 py-2 outline-none rounded-md" />
     </div>
-    <button type="button" 
+    <button type="button" (click)="loginUser(password.value, username.value)"
     class=" w-52 mt-7 py-2 bg-teal-500 text-gray-900  font-bold rounded-md text-lg tracking-wide
       hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms]
       transition-[color,box-shadow] hover:text-teal-500">
