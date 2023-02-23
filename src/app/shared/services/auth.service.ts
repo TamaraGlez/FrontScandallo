@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Iusers, Login } from './../interfaces/iusers';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, Observable, throwError } from 'rxjs';
+import { Iusers } from './../interfaces/iusers';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AuthService {
 
 
-    // public url= 'http://escandallos-back.vercel.app/'
+    // public url= 'https://escandallos-back.vercel.app/'
     public url= 'http://localhost:3000/'
 
   constructor(private http: HttpClient) { }
@@ -43,5 +43,18 @@ export class AuthService {
     let user = JSON.parse(String(localStorage.getItem('user')));
     return user;
   }
+
+  checkSession(): Observable<any>{
+    return this.http.post( this.url + "users/checksession", this.headers).pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  handleError(error: HttpErrorResponse){
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    return throwError(error.error.message)
+  }
+  
 
 }

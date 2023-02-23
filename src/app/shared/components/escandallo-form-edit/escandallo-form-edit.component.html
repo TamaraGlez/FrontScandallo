@@ -14,12 +14,12 @@
     <div>
       <div class="flex gap-3">
         <p>Brix</p>
-        <button>+</button>
+        <button (click)="addInput('brix', 'open')">+</button>
         <button (click)="activeEdit()">Edit</button>
-        <button (click)="activeEdit()">Cancel</button>
+        <button (click)="addInput('brix', 'close')">Cancel</button>
         <button (click)="activeEdit()">Guardar</button>
       </div>
-      <input type="text" inputmode="numeric" />
+      <input *ngIf="addBrixIsActive" type="text" inputmode="numeric" />
       <div class="flex gap-3">
         <ng-container *ngFor="let data of escandalloToEdit.data.brix">
           <span *ngIf="!editIsActive">{{data}}</span>
@@ -33,7 +33,7 @@
     <div class="mt-5">
       <div class="flex gap-3">
         <p>Penetromia</p>
-        <button>+</button>
+        <button (click)="addInput('pn', 'open')">+</button>
         <button (click)="activeEdit()">Edit</button>
       </div>
       <input type="text" inputmode="numeric" />

@@ -20,6 +20,8 @@ export class EscandalloFormEditComponent implements OnInit {
   public product!: Iproducts
   public calibers: string[] = []
   public editIsActive: boolean = false
+  public addBrixIsActive: boolean = false
+  public addPnIsActive: boolean = false
   public slidervalue:number = 50
 
   constructor( private api: ApiService, private activateRoute: ActivatedRoute, private router: Router ){}
@@ -32,11 +34,14 @@ export class EscandalloFormEditComponent implements OnInit {
 
     this.activateRoute.paramMap.subscribe((param) => {
       this.id = param.get('id')
+
       this.api.getEscandalloById(this.id).subscribe((data: IEscandallo) => {
         this.escandalloToEdit = {...data}
         console.log(this.escandalloToEdit);
 
         this.api.getProductByCode(this.escandalloToEdit.product).subscribe(data => {
+          console.log(data);
+          
           this.product = data
           this.product.calibers.forEach( (cal: {ref: string, size: string}) => {
             this.calibers = [ ...this.calibers, cal.ref]
@@ -51,6 +56,15 @@ export class EscandalloFormEditComponent implements OnInit {
 
   activeEdit(){
     this.editIsActive = true
+  }
+  addInput(parameter: string, action:string){
+
+    const add:any = {
+      brix: () => { action === 'open' ? this.addBrixIsActive = true : this.addBrixIsActive = false},
+      pn: () => {  action === 'open' ? this.addPnIsActive = true : this.addBrixIsActive = false }
+    }
+
+    return add[parameter]()
   }
   
 }

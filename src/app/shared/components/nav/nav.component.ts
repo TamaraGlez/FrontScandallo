@@ -15,15 +15,6 @@ export class NavComponent implements OnInit {
  
 
   ngOnInit(): void {
-
-    console.log("NAVBAR ONINIT");
-    
-
-      this.auth.getUser().subscribe( (res: Iusers) => {
-        console.log(res);
-        
-        
-      })
     
   }
 

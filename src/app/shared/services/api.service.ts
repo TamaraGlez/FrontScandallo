@@ -6,97 +6,101 @@ import { Observable } from 'rxjs';
 
 import { Iproducts } from '../interfaces/iproducts';
 
-
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
+  public headers = {
+    headers: new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+      'Access-Control-Allow-Origin': '*',
+      'Accept': 'application/json',
+    }),
+  };
 
-  public headers = {headers: new HttpHeaders ({
-    Authorization: 'Bearer ' + localStorage.getItem ('token'),
-  })}
-
-  // public url= 'http://escandallos-back.vercel.app/'
+  // public url = 'https://escandallos-back.vercel.app/';
   public url= 'http://localhost:3000/'
 
   defect: Idefects = {
-
     title: '',
     image: '',
-    description: ''
-
-  }
+    description: '',
+  };
 
   id: number = 0;
 
-
-  constructor(private http: HttpClient) { }
-
-
+  constructor(private http: HttpClient) {}
 
   //*-------------ESCANDALLOS--------------------------------------------
 
-  getAllEscandallos():Observable<any> {
-    return this.http.get(this.url + 'escandallos', this.headers)
+  getAllEscandallos(): Observable<any> {
+    return this.http.get(this.url + 'escandallos', this.headers);
   }
 
-  getEscandalloById(escandalloId: any):Observable<any> {
-    return this.http.get(this.url + 'escandallos/' + escandalloId, this.headers)
+  getEscandalloById(escandalloId: any): Observable<any> {
+    return this.http.get(
+      this.url + 'escandallos/' + escandalloId,
+      this.headers
+    );
   }
 
-  createEscandallo(newEscandallo:IEscandallo):Observable<any> {
-    return this.http.post(this.url + 'escandallos/create', newEscandallo, this.headers)
+  createEscandallo(newEscandallo: IEscandallo): Observable<any> {
+    return this.http.post(
+      this.url + 'escandallos/create',
+      newEscandallo,
+      this.headers
+    );
   }
-  editEscandallo(escandalloId: string, editItem:IEscandallo):Observable<any> {
-    return this.http.put(this.url + 'escandallos/' + escandalloId, editItem, this.headers)
+  editEscandallo(escandalloId: string, editItem: IEscandallo): Observable<any> {
+    return this.http.put(
+      this.url + 'escandallos/' + escandalloId,
+      editItem,
+      this.headers
+    );
   }
-  deleteEscandallo(escandalloId: string):Observable<any> {
-    return this.http.delete(this.url + 'escandallos/' + escandalloId, this.headers)
+  deleteEscandallo(escandalloId: string): Observable<any> {
+    return this.http.delete(
+      this.url + 'escandallos/' + escandalloId,
+      this.headers
+    );
   }
-
 
   //*--------------- DEFECTS ---------------------------------------------
 
   getAllDefects(): Observable<Idefects[]> {
-    return this.http.get<Idefects[]>(this.url + 'defects', this.headers)
+    return this.http.get<Idefects[]>(this.url + 'defects', this.headers);
   }
-  
+
   getDefectsById(id: number) {
     return this.http.get(this.url + id, this.headers);
   }
 
+  //*--------------- PRODUCTS ---------------------------------------------
 
-    //*--------------- PRODUCTS ---------------------------------------------
-
-  getAllProducts():Observable<Iproducts[]> {
-    return this.http.get<Iproducts[]>(this.url + 'products', this.headers)
+  getAllProducts(): Observable<Iproducts[]> {
+    return this.http.get<Iproducts[]>(this.url + 'products', this.headers);
   }
 
-  getProductByCode(code:string): Observable<Iproducts> {
-    return this.http.get<Iproducts>( this.url + 'products/' + code, this.headers)
+  getProductByCode(code: string): Observable<Iproducts> {
+    return this.http.get<Iproducts>(
+      this.url + 'products/' + code,
+      this.headers
+    );
   }
 
-
-    //*--------------- VARIETIES ---------------------------------------------
-
+  //*--------------- VARIETIES ---------------------------------------------
 
   getAllVariety() {
-    return this.http.get(this.url + 'varieties', this.headers)
+    return this.http.get(this.url + 'varieties', this.headers);
   }
 
-    //*--------------- PROVIDERS ---------------------------------------------
+  //*--------------- PROVIDERS ---------------------------------------------
 
   getAllProviders() {
-    return this.http.get(this.url + 'providers', this.headers)
+    return this.http.get(this.url + 'providers', this.headers);
   }
 
-  getAllUsers(){
-    return this.http.get(this.url + 'users', this.headers)
+  getAllUsers() {
+    return this.http.get(this.url + 'users', this.headers);
   }
-
-
-
-
 }
-

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthUserGuard } from './shared/auth-user.guard';
+// import { AuthUserGuard } from './shared/auth-user.guard';
 
 const routes: Routes = [
   {path:"index", loadChildren: () => import('./pages/dashboard/dashboard.module').then((m)=>m.DashboardModule), },
