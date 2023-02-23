@@ -4,3 +4,9 @@ export interface Iusers {
     warehouse: string,
     rol: string
 }
+
+
+export interface Login {
+  token: string;
+}
+
