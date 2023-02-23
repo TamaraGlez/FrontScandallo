@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard.component';
 import { EscandalloFormEditComponent } from 'src/app/shared/components/escandallo-form-edit/escandallo-form-edit.component';
 import { PopupComponent } from 'src/app/shared/popup/popup.component';
 import { FormProductComponent } from 'src/app/shared/components/form-product/form-product.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +19,9 @@ import { FormProductComponent } from 'src/app/shared/components/form-product/for
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule, 
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class DashboardModule {
