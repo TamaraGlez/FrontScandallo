@@ -76,5 +76,12 @@ export class ApiService {
     return this.http.get(this.url + 'providers')
   }
 
+  getAllUsers(){
+    return this.http.get(this.url + 'users')
+  }
+
+
+
+
 }
 
