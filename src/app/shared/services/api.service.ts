@@ -1,11 +1,11 @@
-import { Iusers, Login } from './../interfaces/iusers';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IEscandallo } from 'src/app/interfaces/i-escandallos';
 import { Idefects } from '../interfaces/idefects';
 import { Observable } from 'rxjs';
-import { CookieService } from "ngx-cookie-service";
+
 import { Iproducts } from '../interfaces/iproducts';
+
 
 
 @Injectable({
@@ -13,9 +13,12 @@ import { Iproducts } from '../interfaces/iproducts';
 })
 export class ApiService {
 
+  public headers = {headers: new HttpHeaders ({
+    Authorization: 'Bearer ' + localStorage.getItem ('token'),
+  })}
 
-  // public url= 'http://escandallos-back.vercel.app/'
-  public url= 'http://localhost:3000/'
+  public url= 'http://escandallos-back.vercel.app/'
+  // public url= 'http://localhost:3000/'
 
   defect: Idefects = {
 
@@ -28,14 +31,16 @@ export class ApiService {
   id: number = 0;
 
 
+  constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient, private cookies: CookieService) { }
+
+  constructor(private http: HttpClient) { }
 
 
   //*-------------ESCANDALLOS--------------------------------------------
 
   getAllEscandallos():Observable<any> {
-    return this.http.get(this.url + 'escandallos')
+    return this.http.get(this.url + 'escandallos', this.headers)
   }
 
   getEscandalloById(escandalloId: any):Observable<any> {
@@ -63,6 +68,7 @@ export class ApiService {
     return this.http.get(this.url + id);
   }
 
+
     //*--------------- PRODUCTS ---------------------------------------------
 
   getAllProducts():Observable<Iproducts[]> {
@@ -76,6 +82,7 @@ export class ApiService {
 
     //*--------------- VARIETIES ---------------------------------------------
 
+
   getAllVariety() {
     return this.http.get(this.url + 'varieties')
   }
@@ -85,6 +92,13 @@ export class ApiService {
   getAllProviders() {
     return this.http.get(this.url + 'providers')
   }
+
+  getAllUsers(){
+    return this.http.get(this.url + 'users')
+  }
+
+
+
 
 }
 
