@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 // import { AuthUserGuard } from './shared/auth-user.guard';
 
 const routes: Routes = [
-  {path:"index", loadChildren: () => import('./pages/dashboard/dashboard.module').then((m)=>m.DashboardModule), },
+  {path:"index", loadChildren: () => import('./pages/dashboard/dashboard.module').then((m)=>m.DashboardModule)},
   {path:"catalogue", loadChildren: () => import('./pages/catalogue/catalogue.module').then((m)=>m.CatalogueModule)},
   {path:"about", loadChildren: () => import('./pages/about/about.module').then((m)=>m.AboutModule)},
   {path:"login", loadChildren: () => import('./pages/login/login.module').then((m)=>m.LoginModule)},

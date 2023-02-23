@@ -40,6 +40,7 @@
               />
             </div>
           </ng-container>
+
         </div>
       </div>
 
@@ -72,12 +73,13 @@
           </ng-container>
         </div>
       </div>
-
+    
       <!-- Calibres -->
       <div class="mt-5">
         <div>
-          <p>Calibre 1:</p>
-          <!-- tabs -->
+          
+        <p>Calibre 1:</p>
+ <!-- tabs -->
           <div
             class="flex rounded-xl bg-gray-200 text-sm font-semibold w-fit"
             x-data="cal1">
@@ -97,23 +99,16 @@
                   >{{cal}}</label
                 >
               </div>
-              
-              <!-- <button type="button" class="border rounded m-3">{{ cal }}</button> -->
             </ng-container>
           </div>
-          <input
-            type="range"
-            name="cal1"
-            id="cal1"
-            max="100"
-            min="0"
-            step="10"
-            value="50"
-          />
-        </div>
-        <div>
-          <p>Calibre 2:</p>
-          <!-- tabs -->
+        <input type="range" name="cal1" id="cal1" max="100" min="0" step="10" value="50" oninput="this.nextElementSibling.value = this.value">
+        <output> 50 </output>
+      </div>
+        
+        
+      <div>
+        <p>Calibre 2:</p>
+                  <!-- tabs -->
           <div
             class="flex rounded-xl bg-gray-200 text-sm font-semibold w-fit"
             x-data="cal2">
@@ -133,34 +128,33 @@
                   >{{cal}}</label
                 >
               </div>
-              
-              <!-- <button type="button" class="border rounded m-3">{{ cal }}</button> -->
             </ng-container>
             </div>
-          <input
-            #range1
-            type="range"
-            name="cal1"
-            id="cal1"
-            max="100"
-            min="0"
-            step="10"
-            value="50"
-          />
-          <!-- <span>{{range1.value}}</span> -->
-        </div>
+       
+        <input type="range" name="cal1" id="cal1" max="100" min="0" step="10" value="50" oninput="this.nextElementSibling.value = this.value">
+        <output> 50 </output>
+      </div>
 
-        <!-- Defectos -->
-        <div class="mt-5">
-          <p>Defectos:</p>
-          <select name="defects">
-            <option>Selecciona del listado</option>
-          </select>
-          <div>
-            <p>Seleccionados</p>
-            <p>Seleccionados</p>
-            <p>Seleccionados</p>
-          </div>
+      <!-- Defectos -->
+      <div class="mt-5">
+        <p>Defectos:</p>
+        <select name="defects" [(ngModel)] = "selecteDefect">
+          <option value="">Selecciona del listado</option>
+          <option *ngFor="let defect of listDefects" value="{{defect.title}}"> {{defect.title}} </option>
+        </select>
+        <div>
+          <button (click)="saveSelecction()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Seleccionar</button>
+          <p>Seleccionados:</p>
+          <p> {{messageDefect}} </p>
+          <ul *ngFor="let selection of selecteDefects; let indexOfSelection = index">
+            <li class="flex flex-row"> {{selection}} </li>
+            <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-0.2 px-2 rounded " 
+            (click)="deleteDefect(selection, indexOfSelection)"> X </button>
+          </ul>
+
+
+
+         
         </div>
 
         <!-- Commentarios -->

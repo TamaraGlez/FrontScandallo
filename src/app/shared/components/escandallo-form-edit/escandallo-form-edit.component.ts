@@ -7,7 +7,6 @@ import { ApiService } from '../../services/api.service';
 import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
 
 
-
 @Component({
   selector: 'app-escandallo-form-edit',
   templateUrl: './escandallo-form-edit.component.html',
@@ -31,10 +30,15 @@ export class EscandalloFormEditComponent implements OnInit {
 
   constructor( private api: ApiService, private activateRoute: ActivatedRoute, private router: Router, private form: FormBuilder ){}
 
+  selecteDefects: string[] = [];
+  selecteDefect: string = '';
+  messageDefect: string = '';
+
 
   ngOnInit(): void {
     this.api.getAllDefects().subscribe(data => {
       this.listDefects = data
+      console.log(this.listDefects);
     })
 
     this.activateRoute.paramMap.subscribe((param) => {
@@ -54,6 +58,7 @@ export class EscandalloFormEditComponent implements OnInit {
         })
       })
     })
+
 
     this.escandalloForm = this.form.group({
 
@@ -85,7 +90,7 @@ export class EscandalloFormEditComponent implements OnInit {
     this.escandalloForm.valueChanges.subscribe((data) => {
       this.escandalloToEdit = data;
     })
-    
+
   }
 
   
@@ -113,6 +118,7 @@ export class EscandalloFormEditComponent implements OnInit {
     }
     return add[parameter]()
   }
+
 
   calcMedia(array: number[]): any {
     let media = array.reduce((accumulator: number, current: number) => {
@@ -157,4 +163,26 @@ export class EscandalloFormEditComponent implements OnInit {
    return edit[field]()
     
   }
+
+  saveSelecction() {
+    if (this.selecteDefects.includes(this.selecteDefect)) {
+      alert('Ya ha seleccionado esa opción');
+      return;
+    }
+      if (this.selecteDefect) {
+
+        this.selecteDefects.push(this.selecteDefect);
+        console.log(this.selecteDefect);
+        this.selecteDefect = '';
+        
+      }
+  }
+
+  deleteDefect(defect: string, index: number) {
+    
+    this.selecteDefects.splice(index, 1)
+    console.log(this.selecteDefects);
+  }
+  
+
 }
