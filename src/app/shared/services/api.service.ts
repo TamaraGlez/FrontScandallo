@@ -1,10 +1,8 @@
-import { Iusers, Login } from './../interfaces/iusers';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IEscandallo } from 'src/app/interfaces/i-escandallos';
 import { Idefects } from '../interfaces/idefects';
 import { Observable } from 'rxjs';
-import { CookieService } from "ngx-cookie-service";
 
 
 @Injectable({
@@ -12,9 +10,12 @@ import { CookieService } from "ngx-cookie-service";
 })
 export class ApiService {
 
+  public headers = {headers: new HttpHeaders ({
+    Authorization: 'Bearer ' + localStorage.getItem ('token'),
+  })}
 
-  public url= 'http://escandallos-back.vercel.app/'
-  // public url= 'http://localhost:3000/'
+  // public url= 'http://escandallos-back.vercel.app/'
+  public url= 'http://localhost:3000/'
 
   defect: Idefects = {
 
@@ -26,9 +27,7 @@ export class ApiService {
 
   id: number = 0;
 
-
-  public url = 'https://escandallos-back.vercel.app/'
-  constructor(private http: HttpClient, private cookies: CookieService) { }
+  constructor(private http: HttpClient) { }
 
 
   getAllDefects() {
@@ -44,7 +43,7 @@ export class ApiService {
   //*-------------ESCANDALLOS--------------------------------------------
 
   getAllEscandallos():Observable<any> {
-    return this.http.get(this.url + 'escandallos')
+    return this.http.get(this.url + 'escandallos', this.headers)
   }
 
   getEscandalloById(escandalloId: string):Observable<any> {
@@ -69,25 +68,6 @@ export class ApiService {
     return this.http.get(this.url + 'products')
 
   }
-
-
-  loginUser(users: Iusers): Observable<Login>{
-    return this.http.post<Login>(this.url + 'users', users,{
-      headers: new HttpHeaders ({
-        Authorization: 'Bearer ' + localStorage.getItem ('token'),
-
-      }),
-    });
-
-  }
-  setToken(token:string){
-    this.cookies.set("token", token)
-  }
-
-  getToken() {
-    return this.cookies.get("token");
-  }
-
   getAllVariety() {
     return this.http.get(this.url + 'varieties')
   }
