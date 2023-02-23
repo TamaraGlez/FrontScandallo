@@ -3,64 +3,134 @@
 
   <div class="mt-5">
     <H2>INFO:</H2>
-    <p>{{escandalloToEdit.ref}}</p>
-    <p>{{escandalloToEdit.product}}</p>
-    <p>{{escandalloToEdit.variety}}</p>
-    <p>{{escandalloToEdit.provider}}</p>
+    <p>{{ escandalloToEdit.ref }}</p>
+    <p>{{ escandalloToEdit.product }}</p>
+    <p>{{ escandalloToEdit.variety }}</p>
+    <p>{{ escandalloToEdit.provider }}</p>
   </div>
 
-  <div class="mt-5">
-    <!-- BRIX -->
-    <div>
-      <div class="flex gap-3">
-        <p>Brix</p>
-        <button (click)="addInput('brix', 'open')">+</button>
-        <button (click)="activeEdit()">Edit</button>
-        <button (click)="addInput('brix', 'close')">Cancel</button>
-        <button (click)="activeEdit()">Guardar</button>
-      </div>
-      <input *ngIf="addBrixIsActive" type="text" inputmode="numeric" />
-      <div class="flex gap-3">
-        <ng-container *ngFor="let data of escandalloToEdit.data.brix">
-          <span *ngIf="!editIsActive">{{data}}</span>
-          <input *ngIf="editIsActive" type="text" inputmode="numeric" value="{{data}}"
-          class="w-10 text-center">
-        </ng-container>
-      </div>
-    </div>
-
-    <!-- PENETROMIA -->
+  <form [formGroup]="escandalloForm" (ngSubmit)="(editEscandallo)">
     <div class="mt-5">
-      <div class="flex gap-3">
-        <p>Penetromia</p>
-        <button (click)="addInput('pn', 'open')">+</button>
-        <button (click)="activeEdit()">Edit</button>
-      </div>
-      <input type="text" inputmode="numeric" />
-      <div class="flex gap-3">
-        <ng-container *ngFor="let data of escandalloToEdit.data.brix">
-          <span *ngIf="!editIsActive">{{data}}</span>
-          <input *ngIf="editIsActive" type="text" inputmode="numeric" value="{{data}}"
-          class="w-10 text-center">
-        </ng-container>
-      </div>
-    </div>
-
-    <!-- Calibres -->
-    <div class="mt-5">
+      <!-- BRIX -->
       <div>
+        <div class="flex gap-3">
+          <p>Brix</p>
+          <!-- <button type="button" (click)="addInput('brix', 'open')">+</button> -->
+          <!-- <button type="button" (click)="addInput('brix', 'close')">Cancel</button> -->
+          <input type="text" inputmode="numeric" placeholder="nuevo brix" class="w-24 p-2 rounded"
+          [(ngModel)]="dataInput" [ngModelOptions]="{standalone: true}" (keydown.enter)="save( 'brix' ,$event)"/>
+        </div>
+        <div class="font-semibold py-2 flex gap-x-3 w-9/12 p-2">
+          <p>Media Brix: </p>
+          <p>{{escandalloToEdit.MediaBrix ? escandalloToEdit.MediaBrix : '-- , -'}}</p>
+          <button type="button" (click)="activeEdit('brix')" class="py-1 px-3 border rounded">Edit</button>
+        </div>
+        <div class="flex w-9/12 p-2 bg-slate-300 rounded-md overflow-x-scroll">
+          <ng-container *ngFor="let data of escandalloToEdit.data.brix; let indexOfData = index;">
+            <div class="grid w-10 text-center border-r border-r-slate-600">
+              <span class="text-slate-600 text-sm">{{indexOfData+1}}</span>
+              <span *ngIf="!editIsActive.brix">{{ data }}</span>
+              <input
+                *ngIf="editIsActive.brix"
+                type="text"
+                inputmode="numeric"
+                value="{{ data }}"
+                class="w-9 text-center rounded "
+                (keydown.enter)="editData($event, indexOfData, 'brix')"
+              />
+            </div>
+          </ng-container>
+
+        </div>
+      </div>
+
+      <!-- PENETROMIA -->
+      <div class="mt-5">
+        <div class="flex gap-3">
+          <p>Penetromia</p>
+          <button type="button" (click)="addInput('pn', 'open')">+</button>
+          <button type="button" (click)="activeEdit('pn')">Edit</button>
+          <button type="button" (click)="addInput('pn', 'close')">
+            Cancel
+          </button>
+        </div>
+        <input *ngIf="addPnIsActive" type="text" inputmode="numeric" 
+        [(ngModel)]="dataInput" [ngModelOptions]="{standalone: true}" (keydown.enter)="save( 'pn' ,$event)"/>
+        <div class="flex flex-wrap">
+          <p>Media Pn: </p>
+          <p>{{escandalloToEdit.MediaFirmness ? escandalloToEdit.MediaFirmness  : 'XX.X' }}</p>
+        </div>
+        <div class="flex gap-3">
+          <ng-container *ngFor="let data of escandalloToEdit.data.firmness">
+            <span *ngIf="!editIsActive.pn">{{ data }}</span>
+            <input
+              *ngIf="editIsActive.pn"
+              type="text"
+              inputmode="numeric"
+              value="{{ data }}"
+              class="w-10 text-center"
+            />
+          </ng-container>
+        </div>
+      </div>
+    
+      <!-- Calibres -->
+      <div class="mt-5">
+        <div>
+          
         <p>Calibre 1:</p>
-        <ng-container *ngFor="let cal of calibers">
-          <button class="border rounded m-3">{{cal}}</button>
-        </ng-container>
+ <!-- tabs -->
+          <div
+            class="flex rounded-xl bg-gray-200 text-sm font-semibold w-fit"
+            x-data="cal1">
+            <ng-container *ngFor="let cal of calibers">
+              <div>
+                <input
+                  type="radio"
+                  name="option"
+                  class="peer hidden"
+                  id="1{{cal}}"
+                  checked
+                />
+                <label
+                  for="1{{cal}}"
+                  class="block cursor-pointer select-none rounded-xl p-2 text-center w-10
+                   peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
+                  >{{cal}}</label
+                >
+              </div>
+            </ng-container>
+          </div>
         <input type="range" name="cal1" id="cal1" max="100" min="0" step="10" value="50" oninput="this.nextElementSibling.value = this.value">
         <output> 50 </output>
       </div>
+        
+        
       <div>
         <p>Calibre 2:</p>
-        <ng-container *ngFor="let cal of calibers">
-          <button class="border rounded m-3">{{cal}}</button>
-        </ng-container>
+                  <!-- tabs -->
+          <div
+            class="flex rounded-xl bg-gray-200 text-sm font-semibold w-fit"
+            x-data="cal2">
+            <ng-container *ngFor="let cal of calibers">
+              <div>
+                <input
+                  type="radio"
+                  name="option2"
+                  class="peer hidden"
+                  id="2{{cal}}"
+                  checked
+                />
+                <label
+                  for="2{{cal}}"
+                  class="block cursor-pointer select-none rounded-xl p-2 text-center w-10
+                   peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
+                  >{{cal}}</label
+                >
+              </div>
+            </ng-container>
+            </div>
+       
         <input type="range" name="cal1" id="cal1" max="100" min="0" step="10" value="50" oninput="this.nextElementSibling.value = this.value">
         <output> 50 </output>
       </div>
@@ -81,32 +151,37 @@
             <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-0.2 px-2 rounded " 
             (click)="deleteDefect(selection, indexOfSelection)"> X </button>
           </ul>
+
+
+
+         
         </div>
-      </div>
 
-      <!-- Commentarios -->
-      <div class="mt-5">
-        <p>Observaciones</p>
-        <textarea 
-        name="comments" id="comments" cols="50" rows="5" 
-        placeholder="Otras observaciones" value="{{escandalloToEdit.comments}}">
-      </textarea>
-      </div>
-
-      <!-- Fotos -->
-      <div class="mt-5">
-        <input type="file" capture="environment" accept="image/*">>
-        <div>
-
+        <!-- Commentarios -->
+        <div class="mt-5">
+          <p>Observaciones</p>
+          <textarea
+            name="comments"
+            id="comments"
+            cols="50"
+            rows="5"
+            placeholder="Otras observaciones"
+            value="{{ escandalloToEdit.comments }}"
+          >
+          </textarea>
         </div>
-      </div>
 
-      <div class="mt-5 flex gap-4">
-        <button type="button">CANCEL</button>
-        <button type="submit">GUARDAR</button>
+        <!-- Fotos -->
+        <div class="mt-5">
+          <input type="file" capture="environment" accept="image/*" />>
+          <div></div>
+        </div>
+
+        <div class="mt-5 flex gap-4">
+          <button type="button">CANCEL</button>
+          <button type="submit">GUARDAR</button>
+        </div>
       </div>
     </div>
-    
-  </div>
-
+  </form>
 </section>
