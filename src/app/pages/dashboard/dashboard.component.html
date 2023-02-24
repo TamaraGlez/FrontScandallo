@@ -5,15 +5,15 @@
   >
     <p class=" font-bold text-slate-700 mx-3">FILTERS: </p>
     <ng-container *ngFor="let product of listProducts">
-      <button (click)="filter(product.code)" 
-      class= "text-sm font-bold 
+      <button (click)="filter(product.code)"
+      class= "text-sm font-bold
       w-8 h-8 m-2 border border-gray-800 rounded-md
       hover:scale-110 hover:bg-slate-700 hover:text-white "
       [ngClass]="filters.includes(product.code) ? 'bg-teal-700 text-white' : 'text-slate-700'"
       >{{product.code}}</button>
     </ng-container>
-    <button (click)="clearFilter()" 
-    class= "text-sm font-bold text-slate-700 
+    <button (click)="clearFilter()"
+    class= "text-sm font-bold text-slate-700
     w-8 h-8 m-2 border border-gray-800 rounded-md
     hover:scale-110 hover:bg-pink-800 hover:text-white ">X</button>
 
@@ -27,14 +27,14 @@
 
   <!-- modal -->
   <ng-template [ngIf]="popupDelete.isActive">
-    <app-popup 
+    <app-popup
     [popupInfo]="popupDelete"
     class="absolute top-1/4 right-1/4"
 
     ></app-popup>
   </ng-template>
-  
-  
+
+
   <!-- card space -->
   <section class="flex flex-wrap gap-5 m-5 overflow-y-scroll">
     <ng-container *ngFor="let escandallo of listFiltered">
@@ -80,10 +80,10 @@
             <span class="w-3/5">
               <p class="font-bold">Calibres</p>
               <p>
-                {{ escandallo.data.sizeMain.caliberRef }}
-                {{ escandallo.data.sizeMain.percentage }}% -
-                {{ escandallo.data.sizeSecond.caliberRef }}
-                {{ escandallo.data.sizeSecond.percentage }}%
+                <!-- {{ escandallo.data.caliberRef1 }}
+                {{ escandallo.data.percentage1 }}% -
+                {{ escandallo.data.caliberRef2 }}
+                {{ escandallo.data.percentage2 }}% -->
               </p>
             </span>
           </div>

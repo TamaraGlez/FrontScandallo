@@ -45,7 +45,6 @@ export class FormComponent implements OnInit {
     })
 
     if (this.formToPrint === 'catalogue') {
-      // aqui ponemos lo que vaya en el formulario
       this.addForm = this.form.group({
 
         code: ['',[Validators.required]],
@@ -55,7 +54,6 @@ export class FormComponent implements OnInit {
     }
 
     if (this.formToPrint === 'users') {
-      // aqui ponemos lo que vaya en el formulario
       this.addForm = this.form.group({
 
         userName: ['',[Validators.required]],
@@ -67,7 +65,6 @@ export class FormComponent implements OnInit {
     }
 
     if (this.formToPrint === 'products') {
-      // aqui ponemos lo que vaya en el formulario
       this.addForm = this.form.group({
 
         name: ['',[Validators.required]],
@@ -77,18 +74,6 @@ export class FormComponent implements OnInit {
     }
 
     if (this.formToPrint === 'providers') {
-      // aqui ponemos lo que vaya en el formulario
-      this.addForm = this.form.group({
-
-        name: ['',[Validators.required]],
-        productRef: ['',[Validators.required]]
-
-      });
-    }
-
-
-    if (this.formToPrint === 'warehouse') {
-      // aqui ponemos lo que vaya en el formulario
       this.addForm = this.form.group({
 
         name: ['',[Validators.required]],
@@ -98,34 +83,81 @@ export class FormComponent implements OnInit {
     }
 
 
+    if (this.formToPrint === 'varieties') {
+      this.addForm = this.form.group({
+
+        name: ['',[Validators.required]],
+        productRef: ['',[Validators.required]]
+
+      });
+    }
+
+    if (this.formToPrint === 'warehouse') {
+      this.addForm = this.form.group({
+
+        name: ['',[Validators.required]],
+        code: ['',[Validators.required]]
+
+      });
+    }
+
 
     this.addForm.valueChanges.subscribe((data) => {
       this.add = data;
+      console.log(data)
     });
+
     console.log(this.addForm)
     console.log(this.form)
   }
 
 
 
-    addContent(e:any) {
-      e.preventDefault()
-      console.log(this.addForm.value)
+  addContent(e:any) {
+
+    e.preventDefault()
+    console.log(this.addForm.value)
+    this.submited = true;
+    if (this.addForm.valid) {
+      let newForm: IAdd = this.add;
+
+    if (this.formToPrint === "users"){
+       this.api.postUsers(newForm).subscribe((res) => {
+     })};
+
+     if (this.formToPrint === "products"){
+      this.api.postProducts(newForm).subscribe((res) => {
+    })};
+
+    if (this.formToPrint === "varieties"){
+      this.api.postVariety(newForm).subscribe((res) => {
+    })};
+
+    if (this.formToPrint === "catalogue"){
+      this.api.postCatalogue(newForm).subscribe((res) => {
+    })};
+
+    if (this.formToPrint === "warehouses"){
+      this.api.postWarehouses(newForm).subscribe((res) => {
+    })};
+
+    if (this.formToPrint === "providers"){
+      this.api.postProviders(newForm).subscribe((res) => {
+    })};
+
+     this.addForm.reset();
+     this.submited = false;
+     this.route.navigate(["/index"])
     }
+
+  }
+
 }
 
-  // addFormulary() {
-  //   this.submited = true;
-  //   if (this.addForm.valid) {
-  //     let newForm: IAdd = this.add;
-  //     console.log(newForm, )
-  //      this.api.postFormulary(newForm, ).subscribe((res) => {
-  //      console.log(res);
-  //      console.log(this.endPoint)
-  //       this.addForm.reset();
-  //       this.submited = false;
-  //       this.route.navigate(["/index"])
-  //    });
-  //   }
-  // }
+
+
+
+
+
+
 
