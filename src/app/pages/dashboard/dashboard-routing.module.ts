@@ -18,6 +18,7 @@ const routes: Routes = [
     path: "edit/:id", component: EscandalloFormEditComponent
   },
 
+
 ];
 
 @NgModule({

@@ -13,11 +13,11 @@
               class="mt-4 w-12 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide"
               (click)="setCode(btnproduc.code)">{{btnproduc.code}}</button>
           </div>
-       
+
       </div>
-      
+
       <div class="flex gap-2">
-        
+
             <div class="flex mt-3 mb-3">
                 <label for="select" class="block mb-1 text-gray-400 font-semibold">VARIEDAD</label>
             <select name="select" class="bg-gray-200 ml-2 outline-none rounded-md">
@@ -29,16 +29,16 @@
                           hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms]
                           transition-[color,box-shadow] hover:text-teal-500">+</button>
             </div>
-      
+
         <div class="flex mt-3 mb-3">
             <label for="select" class="block mb-1  text-gray-400 font-semibold">PROVEEDOR</label>
             <select name="select" class="bg-gray-200 ml-2 outline-none rounded-md">
               <option value="">Selec. Proveedor</option>
               <option  *ngFor="let provider of listProviders" value={{provider.name}}>{{provider.name}}</option>
             </select>
-            <button type="submit" required="require" class="w-10 ml-2 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide
+            <button type="button" required="require" class="w-10 ml-2 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide
                           hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms]
-                          transition-[color,box-shadow] hover:text-teal-500">+</button>
+                          transition-[color,box-shadow] hover:text-teal-500" routerLink="/form/providers">+</button>
           </div>
 
       </div>

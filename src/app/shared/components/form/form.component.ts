@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { IAdd } from '../../interfaces/iadd';
 import { Component, OnInit } from '@angular/core';
@@ -15,18 +15,24 @@ export class FormComponent implements OnInit {
   addForm!: FormGroup;
   add!: IAdd;
   submited: boolean = false;
-  endPoint: string = "html";
-  public item: any =
-  {
-    code: "AA",
-    name: "jkdlkafj"
-  }
+  formToPrint!: string | null
+
+
+  // public item: any =
+  // {
+  //   name: "string",
+  //   flesh: "string",
+  //   code: "string",
+  //   isActive:" boolean"
+
+  // }
 
 
   constructor(
     private form: FormBuilder,
     private api: ApiService,
-    private route: Router
+    private route: Router,
+    private activeRoute: ActivatedRoute
   ) {
 
 
@@ -34,10 +40,64 @@ export class FormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.addForm = this.form.group({
-      code: ['',[Validators.required]],
-      name: ['',[Validators.required]],
-    });
+    this.activeRoute.paramMap.subscribe(params => {
+      this.formToPrint = params.get("form")
+    })
+
+    if (this.formToPrint === 'catalogue') {
+      // aqui ponemos lo que vaya en el formulario
+      this.addForm = this.form.group({
+
+        code: ['',[Validators.required]],
+        name: ['',[Validators.required]],
+
+      });
+    }
+
+    if (this.formToPrint === 'users') {
+      // aqui ponemos lo que vaya en el formulario
+      this.addForm = this.form.group({
+
+        userName: ['',[Validators.required]],
+        password: ['',[Validators.required]],
+        warehouse: ['',[Validators.required]],
+        rol: ['',[Validators.required]]
+
+      });
+    }
+
+    if (this.formToPrint === 'products') {
+      // aqui ponemos lo que vaya en el formulario
+      this.addForm = this.form.group({
+
+        name: ['',[Validators.required]],
+        code: ['',[Validators.required]]
+
+      });
+    }
+
+    if (this.formToPrint === 'providers') {
+      // aqui ponemos lo que vaya en el formulario
+      this.addForm = this.form.group({
+
+        name: ['',[Validators.required]],
+        productRef: ['',[Validators.required]]
+
+      });
+    }
+
+
+    if (this.formToPrint === 'warehouse') {
+      // aqui ponemos lo que vaya en el formulario
+      this.addForm = this.form.group({
+
+        name: ['',[Validators.required]],
+        code: ['',[Validators.required]]
+
+      });
+    }
+
+
 
     this.addForm.valueChanges.subscribe((data) => {
       this.add = data;
@@ -46,30 +106,26 @@ export class FormComponent implements OnInit {
     console.log(this.form)
   }
 
-  addFormulary() {
-    this.submited = true;
-    if (this.addForm.valid) {
-      let newForm: any = this.add;
-      console.log(newForm)
-       this.api.postFormulary(newForm).subscribe((res) => {
-       console.log(res);
-        this.addForm.reset();
-        this.submited = false;
-        this.route.navigate(["/index"])
-     });
+
+
+    addContent(e:any) {
+      e.preventDefault()
+      console.log(this.addForm.value)
     }
-  }
 }
-// addHotel() {
-//   let newHotel: Ihotel = this.hotel;
-//   console.log(newHotel);
-//   newHotel.imageDetail = this.listado;
 
-
-//   this.api.postHotel(newHotel).subscribe((response) => {
-//     this.hotelForm.reset();
-//     this.route.navigate(['/hotels']);
-//   });
-// }
-
+  // addFormulary() {
+  //   this.submited = true;
+  //   if (this.addForm.valid) {
+  //     let newForm: IAdd = this.add;
+  //     console.log(newForm, )
+  //      this.api.postFormulary(newForm, ).subscribe((res) => {
+  //      console.log(res);
+  //      console.log(this.endPoint)
+  //       this.addForm.reset();
+  //       this.submited = false;
+  //       this.route.navigate(["/index"])
+  //    });
+  //   }
+  // }
 

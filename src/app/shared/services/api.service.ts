@@ -106,11 +106,11 @@ export class ApiService {
   }
 
 
-  postFormulary(add: any): Observable<any> {
-    console.log(add)
-    return this.http.post(this.url + 'providers/create', add, this.headers);
+  // postFormulary( add: IAdd, endPoint: String): Observable<any> {
+  //   console.log(add)
+  //   return this.http.post(`http://localhost:3000/${endPoint}`, add, this.headers);
 
-  }
+  // }
 
   // postFormulary(formulary: IStructure, endPoint:string){
   //   return this.http.post(this.url + '' this.headers);
