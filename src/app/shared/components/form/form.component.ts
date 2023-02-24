@@ -18,16 +18,6 @@ export class FormComponent implements OnInit {
   formToPrint!: string | null
 
 
-  // public item: any =
-  // {
-  //   name: "string",
-  //   flesh: "string",
-  //   code: "string",
-  //   isActive:" boolean"
-
-  // }
-
-
   constructor(
     private form: FormBuilder,
     private api: ApiService,

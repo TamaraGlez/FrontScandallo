@@ -91,21 +91,10 @@
         <input class="w-full" type="text" formControlName="name" />
       </div>
 
-      <!-- <div class="flex mb-8">
-        <label class="pr-6 text-gray-400 font-semibold">FLESH</label>
-        <input class="w-full" type="text" formControlName="flesh" />
-      </div> -->
-
       <div class="flex mb-8">
         <label class="pr-6 text-gray-400 font-semibold">CODE</label>
         <input class="w-full" type="text" formControlName="code" />
       </div>
-
-      <!-- <div class="flex mb-8">
-        <label class="pr-6 text-gray-400 font-semibold">CALIBRE</label>
-        <input class="w-full" type="text" formControlName="calibers" />
-      </div> -->
-
 
       <div class="flex py-4">
         <button
@@ -126,65 +115,55 @@
     <!-- PROVIDERS -->
     <div
       *ngIf="formToPrint === 'providers'"
-      class="flex flex-col bg-gray-900 p-10 m-10 rounded-xl"
-    >
+      class="flex flex-col bg-gray-900 p-10 m-10 rounded-xl">
+
       <div class="flex mb-8">
         <label class="pr-6 text-gray-400 font-semibold">NOMBRE</label>
         <input class="w-full" type="text" formControlName="name" />
       </div>
-
 
       <div class="flex mb-8">
         <label class="pr-6 text-gray-400 font-semibold">CODE</label>
         <input class="w-full" type="text" formControlName="code" />
       </div>
 
-
       <div class="flex py-4">
         <button
           type="submit"
-          class="ml-2 p-10 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500"
-        >
+          class="ml-2 p-10 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500">
           AÑADIR
         </button>
         <button
           type="button"
-          class="ml-2 p-6 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500"
-        >
+          class="ml-2 p-6 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500">
           CANCELAR
         </button>
       </div>
     </div>
 
-
     <!-- VARIETY -->
     <div
       *ngIf="formToPrint === 'varieties'"
-      class="flex flex-col bg-gray-900 p-10 m-10 rounded-xl"
-    >
+      class="flex flex-col bg-gray-900 p-10 m-10 rounded-xl">
       <div class="flex mb-8">
         <label class="pr-6 text-gray-400 font-semibold">NOMBRE</label>
         <input class="w-full" type="text" formControlName="name" />
       </div>
-
 
       <div class="flex mb-8">
         <label class="pr-6 text-gray-400 font-semibold">REFERENCIA</label>
         <input class="w-full" type="text" formControlName="productRef" />
       </div>
 
-
       <div class="flex py-4">
         <button
           type="submit"
-          class="ml-2 p-10 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500"
-        >
+          class="ml-2 p-10 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500">
           AÑADIR
         </button>
         <button
           type="button"
-          class="ml-2 p-6 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500"
-        >
+          class="ml-2 p-6 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500">
           CANCELAR
         </button>
       </div>
@@ -193,8 +172,8 @@
     <!-- WAREHOUSE -->
     <div
       *ngIf="formToPrint === 'warehouse'"
-      class="flex flex-col bg-gray-900 p-10 m-10 rounded-xl"
-    >
+      class="flex flex-col bg-gray-900 p-10 m-10 rounded-xl">
+
       <div class="flex mb-8">
         <label class="pr-6 text-gray-400 font-semibold">NOMBRE</label>
         <input class="w-full" type="text" formControlName="name" />
@@ -210,22 +189,16 @@
       <div class="flex py-4">
         <button
           type="submit"
-          class="ml-2 p-10 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500"
-        >
+          class="ml-2 p-10 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500">
           AÑADIR
         </button>
         <button
           type="button"
-          class="ml-2 p-6 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500"
-        >
+          class="ml-2 p-6 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500">
           CANCELAR
         </button>
       </div>
     </div>
-
-
-
-
 
   </form>
 </div>
