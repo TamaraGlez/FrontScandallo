@@ -36,7 +36,7 @@
   
   
   <!-- card space -->
-  <section class="flex flex-wrap gap-5 m-5 overflow-y-scroll">
+  <section *ngIf="listFiltered" class="flex flex-wrap gap-5 m-5 overflow-y-scroll">
     <ng-container *ngFor="let escandallo of listFiltered">
       <!-- card item -->
       <div class="w-52 aspect-2/3 bg-white border p-1 rounded">
@@ -80,10 +80,10 @@
             <span class="w-3/5">
               <p class="font-bold">Calibres</p>
               <p>
-                {{ escandallo.data.sizeMain.caliberRef }}
-                {{ escandallo.data.sizeMain.percentage }}% -
-                {{ escandallo.data.sizeSecond.caliberRef }}
-                {{ escandallo.data.sizeSecond.percentage }}%
+                {{ escandallo.data.caliberRef1 }}
+                {{ escandallo.data.percentage1 }}% -
+                {{ escandallo.data.caliberRef2 }}
+                {{ escandallo.data.percentage2 }}%
               </p>
             </span>
           </div>
