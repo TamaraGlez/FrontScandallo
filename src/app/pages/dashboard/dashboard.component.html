@@ -1,4 +1,4 @@
-<div class="min-h-screen h-full static w-screen -z-10 overflow-hidden">
+<div class="min-h-screen h-full static w-screen z-10 overflow-hidden">
   <!-- option nav -->
   <section
     class="flex justify-start items-center my-auto h-20 bg-slate-200"
@@ -6,7 +6,7 @@
     <p class=" font-bold text-slate-700 mx-3">FILTERS: </p>
     <ng-container *ngFor="let product of listProducts">
       <button (click)="filter(product.code)" 
-      class= "text-sm font-bold 
+      class= "shadow-md text-sm font-bold 
       w-8 h-8 m-2 border border-gray-800 rounded-md
       hover:scale-110 hover:bg-slate-700 hover:text-white "
       [ngClass]="filters.includes(product.code) ? 'bg-teal-700 text-white' : 'text-slate-700'"
@@ -19,7 +19,7 @@
 
   </section>
   <button
-    class="text-sm font-bold text-white h-fit w-32 mr-4 rounded bg-orange-400 hover:bg-orange-700 absolute top-8 right-3"
+    class="text-sm font-bold text-white h-fit w-32 mr-4 rounded bg-orange-400 hover:bg-orange-700 absolute top-6 p-1 shadow-md right-3"
     routerLink="nuevo"
   >
     NUEVO ESCANDALLO
@@ -39,7 +39,7 @@
   <section class="flex flex-wrap gap-5 m-5 overflow-y-scroll">
     <ng-container *ngFor="let escandallo of listFiltered">
       <!-- card item -->
-      <div class="w-52 aspect-2/3 bg-white border p-1 rounded">
+      <div class="w-52 aspect-2/3 bg-white border p-1 rounded shadow-md">
         <div
           class="pt-2 rounded"
           [ngClass]="
