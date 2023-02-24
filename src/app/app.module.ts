@@ -10,19 +10,21 @@ import { CookieService } from 'ngx-cookie-service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    FooterComponent,
+    FooterComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule, 
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule
-    
+
   ],
   providers: [ApiService, CookieService],
   bootstrap: [AppComponent]

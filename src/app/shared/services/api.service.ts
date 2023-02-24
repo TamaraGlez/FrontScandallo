@@ -1,3 +1,4 @@
+import { IAdd } from './../interfaces/iadd';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IEscandallo } from 'src/app/interfaces/i-escandallos';
@@ -103,4 +104,25 @@ export class ApiService {
   getAllUsers() {
     return this.http.get(this.url + 'users', this.headers);
   }
+
+
+  postFormulary(add: any): Observable<any> {
+    console.log(add)
+    return this.http.post(this.url + 'providers/create', add, this.headers);
+
+  }
+
+  // postFormulary(formulary: IStructure, endPoint:string){
+  //   return this.http.post(this.url + '' this.headers);
+  // }
+
+  // deleteFormulary(id: number,){
+  //   return this.http.delete(this.url + '');
+  // }
+
+
+
+
+
+
 }

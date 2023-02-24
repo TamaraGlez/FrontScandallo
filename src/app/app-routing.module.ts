@@ -10,11 +10,7 @@ const routes: Routes = [
   {path:"register", loadChildren: () => import('./pages/register/register.module').then((m)=>m.RegisterModule)},
   {path:"guide", loadChildren: () => import('./pages/guide/guide.module').then((m)=>m.GuideModule)},
   {path:"configure", loadChildren: () => import('./pages/configure/configure.module').then((m)=>m.ConfigureModule)},
-
-
-
-
-
+  {path:"form", loadChildren: () => import('./shared/components/form/form.module').then((m)=>m.FormModule)},
 
 
 ];

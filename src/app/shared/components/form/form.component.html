@@ -1,0 +1,28 @@
+<div>
+    <h2>AÑADIR VARIEDAD</h2>
+
+    <form [formGroup]="addForm" (ngSubmit)="addFormulary()" >
+
+        <div class="flex">
+            <label for="">CODIGO</label>
+            <input type="text" formControlName="code"/>
+        </div>
+
+
+        <div class="flex">
+            <label for="">NOMBRE</label>
+            <input type="text" formControlName="name"/>
+        </div>
+
+
+
+       <div class=" flex">
+        <button class="button">CANCELAR</button>
+        <button>ACEPTAR</button>
+       </div>
+
+    </form>
+
+</div>
+
+
