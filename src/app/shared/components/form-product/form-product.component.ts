@@ -14,6 +14,7 @@ export class FormProductComponent implements OnInit {
   public listVariety!: Ivariety[]
   public listProviders!: Iproviders[]
   public listVarietyFiltered!: Ivariety[]
+
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
@@ -31,6 +32,8 @@ export class FormProductComponent implements OnInit {
       this.listProviders = [...results];
       console.log(this.listProviders);
     });
+
+
 
   }
 

@@ -1,64 +1,117 @@
-<div class="h-screen bg-gray-400 flex flex-col justify-center items-center w-full">
+<div
+  class="h-screen bg-gray-400 flex flex-col justify-center items-center w-full"
+>
   <form class="">
-    <div class="bg-gray-900  px-10 py-8 rounded-xl shadow-md" *ngIf="listProducts">
-
-      <h1 class="text-center text-2xl font-semibold text-gray-400">Nueva Entrada</h1>
+    <div class="bg-gray-900 px-10 py-8 rounded-xl shadow-md"
+      *ngIf="listProducts"
+    >
+      <h1 class="text-center text-2xl font-semibold text-gray-400">
+        Nueva Entrada
+      </h1>
       <div class="flex flex-col">
         <div>
-          <label for="name" class="block mb-1 text-gray-400 font-semibold">Ref. Partida</label>
-          <input type="text" class="bg-gray-200 px-32 py-2 outline-none rounded-md w-full" />
-        </div>
-        <div class="flex flex-row gap-2 justify-center ">
-            <button *ngFor="let btnproduc of listProducts" type="button"
-              class="mt-4 w-12 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide"
-              (click)="setCode(btnproduc.code)">{{btnproduc.code}}</button>
-          </div>
+          <label for="name" class="block mb-1 text-gray-400 font-semibold"
+            >Ref. Partida</label
+          >
 
+          <input
+            type="text"
+            class="bg-gray-200 px-32 py-2 outline-none rounded-md w-full"
+
+          />
+        </div>
+        <div class="flex flex-row gap-2 justify-center">
+          <button
+            *ngFor="let btnproduc of listProducts"
+            type="button"
+            class="mt-4 w-12 peer-bg-te  focus:bg-gray-400 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide"
+            (click)="setCode(btnproduc.code)"
+          >
+            {{ btnproduc.code }}
+          </button>
+        </div>
       </div>
 
       <div class="flex gap-2">
+        <div class="flex mt-3 mb-3">
+          <label for="select" class="block mb-1 text-gray-400 font-semibold"
+            >VARIEDAD</label
+          >
+          <select
+            name="select"
+            class="bg-gray-200 ml-2 outline-none rounded-md"
+          >
+            <option value="">Selec. Variedad</option>
+            <option
+              *ngFor="let variety of listVarietyFiltered"
+              value="{{ variety.name }}"
+            >
+              {{ variety.name }}
+            </option>
+          </select>
 
-            <div class="flex mt-3 mb-3">
-                <label for="select" class="block mb-1 text-gray-400 font-semibold">VARIEDAD</label>
-            <select name="select" class="bg-gray-200 ml-2 outline-none rounded-md">
-                <option value="">Selec. Variedad</option>
-                <option  *ngFor="let variety of listVarietyFiltered" value={{variety.name}}>{{variety.name}}</option>
-            </select>
-
-            <button type="submit" required="require" class="w-10 ml-2 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide
-                          hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms]
-                          transition-[color,box-shadow] hover:text-teal-500">+</button>
-            </div>
+          <button
+            type="button"
+            required="require"
+            class="w-10 ml-2 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500"
+            routerLink="/form/varieties">
+            +
+          </button>
+        </div>
 
         <div class="flex mt-3 mb-3">
-            <label for="select" class="block mb-1  text-gray-400 font-semibold">PROVEEDOR</label>
-            <select name="select" class="bg-gray-200 ml-2 outline-none rounded-md">
-              <option value="">Selec. Proveedor</option>
-              <option  *ngFor="let provider of listProviders" value={{provider.name}}>{{provider.name}}</option>
-            </select>
-            <button type="button" required="require" class="w-10 ml-2 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide
-                          hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms]
-                          transition-[color,box-shadow] hover:text-teal-500" routerLink="/form/providers">+</button>
-          </div>
-
+          <label for="select" class="block mb-1 text-gray-400 font-semibold"
+            >PROVEEDOR</label
+          >
+          <select
+            name="select"
+            class="bg-gray-200 ml-2 outline-none rounded-md"
+          >
+            <option value="">Selec. Proveedor</option>
+            <option
+              *ngFor="let provider of listProviders"
+              value="{{ provider.name }}"
+            >
+              {{ provider.name }}
+            </option>
+          </select>
+          <button
+            type="button"
+            required="require"
+            class="w-10 ml-2 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500"
+            routerLink="/form/providers"
+          >
+            +
+          </button>
+        </div>
       </div>
-      <button type="submit" required="require" class="mt-4 bg-teal-500 text-gray-900 p-2 font-bold rounded-md text-lg tracking-wide
-      hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms]
-      transition-[color,box-shadow] hover:text-teal-500">
-        AÑADIR DATOS</button>
+      <button
+        type="submit"
+        required="require"
+        class="mt-4 bg-teal-500 text-gray-900 p-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500"
+      >
+        AÑADIR DATOS
+      </button>
 
       <div class="flex gap-1">
-        <button type="submit" required="require" class="mt-4 w-auto p-2 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide
-      hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms]
-      transition-[color,box-shadow] hover:text-teal-500">
-          CANCELAR</button>
+        <button
+          type="button"
+          routerLink='/index'
+          required="require"
+          class="mt-4 w-auto p-2 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500"
+        >
+          CANCELAR
+        </button>
 
-        <button type="submit" required="require" class="mt-4 w-auto p-2 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide
-        hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms]
-        transition-[color,box-shadow] hover:text-teal-500">
-          GUARDAR</button>
+        <!-- (click)="newEntry(productRef.value, name.value)" -->
+        <button
+          type="submit"
+          required="require"
+          class="mt-4 w-auto p-2 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500"
+        >
+          GUARDAR
+        </button>
       </div>
-
     </div>
   </form>
 </div>

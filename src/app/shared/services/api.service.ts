@@ -140,4 +140,12 @@ export class ApiService {
     return this.http.post(this.url + "warehouses/create", add, this.headers);
 
   }
+
+  // post( add: IAdd): Observable<any> {
+  //   console.log(add)
+  //   return this.http.post(this.url + "", add, this.headers);
+
+  // }
+
+
 }

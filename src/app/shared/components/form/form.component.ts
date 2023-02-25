@@ -3,7 +3,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 import { IAdd } from '../../interfaces/iadd';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AsyncAction } from 'rxjs/internal/scheduler/AsyncAction';
+// import { AsyncAction } from 'rxjs/internal/scheduler/AsyncAction';
 
 @Component({
   selector: 'app-form',
@@ -23,11 +23,7 @@ export class FormComponent implements OnInit {
     private api: ApiService,
     private route: Router,
     private activeRoute: ActivatedRoute
-  ) {
-
-
-
-  }
+  ) {}
 
   ngOnInit(): void {
     this.activeRoute.paramMap.subscribe(params => {
@@ -104,10 +100,11 @@ export class FormComponent implements OnInit {
 
 
   addContent(e:any) {
-
+    //para evitar que el botón submit recargue
     e.preventDefault()
     console.log(this.addForm.value)
     this.submited = true;
+
     if (this.addForm.valid) {
       let newForm: IAdd = this.add;
 
