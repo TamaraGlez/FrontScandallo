@@ -33,8 +33,9 @@ export class FormComponent implements OnInit {
     if (this.formToPrint === 'catalogue') {
       this.addForm = this.form.group({
 
-        code: ['',[Validators.required]],
-        name: ['',[Validators.required]],
+        title: ['',[Validators.required]],
+        image: ['',[Validators.required]],
+        producto:['',[Validators.required]]
 
       });
     }
@@ -45,7 +46,7 @@ export class FormComponent implements OnInit {
         userName: ['',[Validators.required]],
         password: ['',[Validators.required]],
         warehouse: ['',[Validators.required]],
-        rol: ['',[Validators.required]]
+        rol: ['',]
 
       });
     }
@@ -110,22 +111,27 @@ export class FormComponent implements OnInit {
 
     if (this.formToPrint === "users"){
        this.api.postUsers(newForm).subscribe((res) => {
+        console.log(res)
      })};
 
      if (this.formToPrint === "products"){
       this.api.postProducts(newForm).subscribe((res) => {
+        console.log(res)
     })};
 
     if (this.formToPrint === "varieties"){
       this.api.postVariety(newForm).subscribe((res) => {
+        console.log(res)
     })};
 
     if (this.formToPrint === "catalogue"){
       this.api.postCatalogue(newForm).subscribe((res) => {
+        console.log(res)
     })};
 
     if (this.formToPrint === "warehouses"){
       this.api.postWarehouses(newForm).subscribe((res) => {
+        console.log(res)
     })};
 
     if (this.formToPrint === "providers"){
