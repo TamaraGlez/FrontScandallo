@@ -1,3 +1,4 @@
+import { IAdd } from './../interfaces/iadd';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IEscandallo } from 'src/app/interfaces/i-escandallos';
@@ -103,4 +104,48 @@ export class ApiService {
   getAllUsers() {
     return this.http.get(this.url + 'users', this.headers);
   }
+
+  // CREAR ELEMENTOS
+  postProviders( add: IAdd): Observable<any> {
+    console.log(add)
+    return this.http.post(this.url + "providers/create", add, this.headers);
+
+  }
+  postCatalogue( add: IAdd): Observable<any> {
+    console.log(add)
+    return this.http.post(this.url + "catalogue/create", add, this.headers);
+
+  }
+
+  postProducts( add: IAdd): Observable<any> {
+    console.log(add)
+    return this.http.post(this.url + "products/create", add, this.headers);
+
+  }
+
+  postVariety( add: IAdd): Observable<any> {
+    console.log(add)
+    return this.http.post(this.url + "varieties/create", add, this.headers);
+
+  }
+
+  postUsers( add: IAdd): Observable<any> {
+    console.log(add)
+    return this.http.post(this.url + "/", add, this.headers);
+
+  }
+
+  postWarehouses( add: IAdd): Observable<any> {
+    console.log(add)
+    return this.http.post(this.url + "warehouses/create", add, this.headers);
+
+  }
+
+  // post( add: IAdd): Observable<any> {
+  //   console.log(add)
+  //   return this.http.post(this.url + "", add, this.headers);
+
+  // }
+
+
 }

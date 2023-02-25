@@ -13,7 +13,8 @@ export class FormProductComponent implements OnInit {
   public listProducts!: Iproducts[]
   public listVariety!: Ivariety[]
   public listProviders!: Iproviders[]
-  public listVarietyFiltered!: Ivariety[];
+  public listVarietyFiltered!: Ivariety[]
+
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
@@ -31,12 +32,14 @@ export class FormProductComponent implements OnInit {
       this.listProviders = [...results];
       console.log(this.listProviders);
     });
-   
+
+
+
   }
 
   setCode(value:string) {
-   
+
     this.listVarietyFiltered = this.listVariety.filter((variety) => variety.productRef === value)
-    
+
   }
 }
