@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd } from '@angular/router';
-import { IEscandallo } from 'src/app/interfaces/i-escandallos';
+import { IEscandallo } from 'src/app/shared/interfaces/i-escandallos';
 import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({

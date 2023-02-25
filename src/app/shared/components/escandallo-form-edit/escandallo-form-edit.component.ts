@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IEscandallo } from 'src/app/interfaces/i-escandallos';
+import { IEscandallo } from 'src/app/shared/interfaces/i-escandallos';
 import { Idefects } from '../../interfaces/idefects';
 import { Iproducts } from '../../interfaces/iproducts';
 import { ApiService } from '../../services/api.service';
@@ -50,7 +50,7 @@ export class EscandalloFormEditComponent implements OnInit {
 
         this.api.getProductByCode(this.escandalloToEdit.product).subscribe(data => {
           console.log(data);
-          
+
           this.product = data
           this.product.calibers.forEach( (cal: {ref: string, size: string}) => {
             this.calibers = [ ...this.calibers, cal.ref]
@@ -66,7 +66,7 @@ export class EscandalloFormEditComponent implements OnInit {
       provider: this.escandalloToEdit.provider,
       product: this.escandalloToEdit.product,
       variety:  this.escandalloToEdit.variety,
-    
+
       data: {
         brix:  [0],
         firmness: [0],
@@ -93,7 +93,7 @@ export class EscandalloFormEditComponent implements OnInit {
 
   }
 
-  
+
   editEscandallo(){
     this.submitted = true;
     if(this.escandalloForm.valid){
@@ -104,9 +104,9 @@ export class EscandalloFormEditComponent implements OnInit {
         this.router.navigate(["/index"])
       })
     }
-    
+
   }
-  
+
   activeEdit(field:string){
     this.editIsActive[field] = true
   }
@@ -147,21 +147,21 @@ export class EscandalloFormEditComponent implements OnInit {
   }
 
   editData(event:any, index:number, field:string){
-    
+
     const edit: any = {
-      brix: () => { 
+      brix: () => {
         this.escandalloToEdit.data.brix[index] = Number(event.target.value)
         this.escandalloToEdit.MediaBrix =  this.calcMedia(this.escandalloToEdit.data.brix)
-        this.editIsActive.brix = false 
+        this.editIsActive.brix = false
         console.log(event.target.value, index, field, this.escandalloToEdit.data.brix);
       },
-      pn: () => { 
+      pn: () => {
         this.escandalloToEdit.data.firmness[index] = event.target.value
-        this.editIsActive.pn = false  
+        this.editIsActive.pn = false
       }
     }
    return edit[field]()
-    
+
   }
 
   saveSelecction() {
@@ -174,15 +174,15 @@ export class EscandalloFormEditComponent implements OnInit {
         this.selecteDefects.push(this.selecteDefect);
         console.log(this.selecteDefect);
         this.selecteDefect = '';
-        
+
       }
   }
 
   deleteDefect(defect: string, index: number) {
-    
+
     this.selecteDefects.splice(index, 1)
     console.log(this.selecteDefects);
   }
-  
+
 
 }
