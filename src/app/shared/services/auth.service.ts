@@ -18,7 +18,7 @@ export class AuthService {
   public headers = {headers: new HttpHeaders ({
     Authorization: 'Bearer ' + localStorage.getItem ('token'),
   })}
-  
+
   loginUser(users: Iusers): Observable<any>{
     return this.http.post<any>(this.url + 'users', users );
   }
@@ -55,6 +55,6 @@ export class AuthService {
     localStorage.removeItem('user');
     return throwError(error.error.message)
   }
-  
+
 
 }
