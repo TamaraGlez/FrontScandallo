@@ -6,8 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './shared/components/nav/nav.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
-import { CookieService } from 'ngx-cookie-service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AuthService } from './shared/services/auth.service';
 
 
 
@@ -26,7 +26,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     FormsModule
 
   ],
-  providers: [ApiService, CookieService],
+  providers: [ApiService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
