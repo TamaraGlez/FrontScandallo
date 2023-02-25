@@ -101,7 +101,8 @@
         </div>
       </div>
       <button
-        type="submit"
+        type="button"
+        (onclick)="nextForm()"
         required="require"
         class="mt-4 bg-teal-500 text-gray-900 p-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500"
         >
@@ -118,11 +119,11 @@
           CANCELAR
         </button>
 
-        <!-- (click)="newEntry(productRef.value, name.value)" -->
         <button
           type="submit"
           required="require"
           class="mt-4 w-auto p-2 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500"
+
         >
           GUARDAR
         </button>

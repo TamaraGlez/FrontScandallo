@@ -1,3 +1,5 @@
+import { IEscandallo } from 'src/app/shared/interfaces/i-escandallos';
+import { IAdd } from './../../interfaces/iadd';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -22,7 +24,7 @@ export class FormProductComponent implements OnInit {
   constructor(
     private api: ApiService,
     private form: FormBuilder,
-    private route: Router,
+    private router: Router,
     private activeRoute: ActivatedRoute
 
     ) {}
@@ -54,10 +56,39 @@ export class FormProductComponent implements OnInit {
       this.addNew = data;
       console.log(data)
     });
+
+
   }
 
   submitForm() {
     console.log(this.addNewForm.value)
+    if(this.addNewForm.valid) {
+      let newForm: IEscandallo = this.addNew
+
+      this.api.postEscandallo(newForm).subscribe((res) => {
+        console.log(res)
+
+        this.addNewForm.reset();
+        this.router.navigate(["/index"]);
+      })
+    //  this.submited = false;
+    //  this.route.navigate(["/index"])
+    }
+  }
+  nextForm() {
+    console.log(this.addNewForm.value)
+    if(this.addNewForm.valid) {
+      let newForm: IEscandallo = this.addNew
+
+      this.api.postEscandallo(newForm).subscribe((res) => {
+        console.log(res)
+
+        this.addNewForm.reset();
+        this.router.navigate([`/index/edit/${res._id}`]);
+      })
+    //  this.submited = false;
+    //  this.route.navigate(["/index"])
+    }
   }
 
   setCode(value: string) {
