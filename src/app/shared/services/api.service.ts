@@ -118,7 +118,7 @@ export class ApiService {
   }
   postCatalogue(add: IAdd): Observable<any> {
     console.log(add);
-    return this.http.post(this.url + 'catalogue/create', add, this.headers);
+    return this.http.post(this.url + 'defects/create', add, this.headers);
   }
 
   postProducts(add: IAdd): Observable<any> {
