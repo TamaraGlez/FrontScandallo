@@ -1,6 +1,6 @@
 
 <div class="h-screen bg-gray-400 flex flex-col justify-center items-center w-screen">
-  <form class="">
+  <form [formGroup]="addNewForm" (ngSubmit)="submitForm()">
     <div class="bg-gray-900 px-10 py-8 rounded-xl shadow-md"
       *ngIf="listProducts"
     >
@@ -16,18 +16,31 @@
           <input
             type="text"
             class="bg-gray-200 px-32 py-2 outline-none rounded-md w-full"
-
+            formControlName="ref"
           />
         </div>
         <div class="flex flex-row gap-2 justify-center">
-          <button
-            *ngFor="let btnproduc of listProducts"
-            type="button"
-            class="mt-4 w-12 peer-bg-te  focus:bg-gray-400 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide"
-            (click)="setCode(btnproduc.code)"
-          >
-            {{ btnproduc.code }}
-          </button>
+
+          <ng-container *ngFor="let btnproduc of listProducts">
+            <div>
+              <input
+                type="radio"
+                name="product"
+                class="peer hidden"
+                value="{{btnproduc.code}}"
+                id="{{btnproduc.code}}"
+                checked
+                (change)="setCode(btnproduc.code)"
+                formControlName="product"
+                />
+
+              <label
+                for="{{btnproduc.code}}"
+                class="block text-white cursor-pointer select-none rounded-xl p-2 text-center w-10
+                 peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
+                >{{btnproduc.code}}</label>
+            </div>
+          </ng-container>
         </div>
       </div>
 
@@ -39,8 +52,9 @@
           <select
             name="select"
             class="bg-gray-200 ml-2 outline-none rounded-md"
+            formControlName="variety"
           >
-            <option value="">Selec. Variedad</option>
+            <option [ngValue]="">Selec. Variedad</option>
             <option
               *ngFor="let variety of listVarietyFiltered"
               value="{{ variety.name }}"
@@ -53,7 +67,8 @@
             type="button"
             required="require"
             class="w-10 ml-2 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500"
-            routerLink="/form/varieties">
+            routerLink="/form/varieties"
+          >
             +
           </button>
         </div>
@@ -65,11 +80,12 @@
           <select
             name="select"
             class="bg-gray-200 ml-2 outline-none rounded-md"
+            formControlName="provider"
           >
             <option value="">Selec. Proveedor</option>
             <option
               *ngFor="let provider of listProviders"
-              value="{{ provider.name }}"
+              [ngValue]="provider.name"
             >
               {{ provider.name }}
             </option>
@@ -85,10 +101,11 @@
         </div>
       </div>
       <button
-        type="submit"
+        type="button"
+        (onclick)="nextForm()"
         required="require"
         class="mt-4 bg-teal-500 text-gray-900 p-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500"
-      >
+        >
         AÑADIR DATOS
       </button>
 
@@ -102,11 +119,11 @@
           CANCELAR
         </button>
 
-        <!-- (click)="newEntry(productRef.value, name.value)" -->
         <button
           type="submit"
           required="require"
           class="mt-4 w-auto p-2 bg-teal-500 text-gray-900 py-2 font-bold rounded-md text-lg tracking-wide hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms] transition-[color,box-shadow] hover:text-teal-500"
+
         >
           GUARDAR
         </button>

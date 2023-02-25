@@ -45,13 +45,7 @@ export class ApiService {
     );
   }
 
-  createEscandallo(newEscandallo: IEscandallo): Observable<any> {
-    return this.http.post(
-      this.url + 'escandallos/create',
-      newEscandallo,
-      this.headers
-    );
-  }
+
   editEscandallo(escandalloId: string, editItem: IEscandallo): Observable<any> {
     return this.http.put(
       this.url + 'escandallos/' + escandalloId,
@@ -118,7 +112,7 @@ export class ApiService {
   }
   postCatalogue(add: IAdd): Observable<any> {
     console.log(add);
-    return this.http.post(this.url + 'catalogue/create', add, this.headers);
+    return this.http.post(this.url + 'defects/create', add, this.headers);
   }
 
   postProducts(add: IAdd): Observable<any> {
@@ -139,6 +133,14 @@ export class ApiService {
   postWarehouses(add: IAdd): Observable<any> {
 
     return this.http.post(this.url + 'warehouses/create', add, this.headers);
+  }
+
+  postEscandallo(newEscandallo: IEscandallo): Observable<any> {
+    return this.http.post(
+      this.url + 'escandallos/create',
+      newEscandallo,
+      this.headers
+    );
   }
 
 }

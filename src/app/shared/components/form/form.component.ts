@@ -31,11 +31,13 @@ export class FormComponent implements OnInit {
     })
 
     if (this.formToPrint === 'catalogue') {
+
       this.addForm = this.form.group({
 
         title: ['',[Validators.required]],
-        image: ['',[Validators.required]],
-        producto:['',[Validators.required]]
+        image: ['',],
+        descripcion:['',],
+        producto: ['',]
 
       });
     }
