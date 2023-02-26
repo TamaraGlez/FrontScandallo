@@ -1,6 +1,6 @@
 <nav class="min-h-screen h-full">
 
-  <div class="flex flex-col items-center h-full overflow-hidden text-gray-400 bg-gray-900 rounded ">
+  <div class="flex flex-col items-center h-full overflow-hidden text-gray-400 bg-gray-900 shadow-md">
 
     <a class="flex items-center w-full px-3 mt-3" href="#">
       <svg class="w-8 h-8 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -75,7 +75,7 @@
             class="ml-2 text-sm font-medium hidden md:flex">{{auth.getUser().userName}}</span>
         </a>
 
-        <button type="button" *ngIf="auth.getToken()" (click)="logOut()" class="mt-4 mx-10 bg-teal-500 text-gray-900 p-2 font-bold rounded-md text-sm tracking-wide
+        <button type="button" *ngIf="auth.getToken()" (click)="logOut()" class="mt-8 mx-10 bg-teal-500 text-gray-900 p-2 font-bold rounded-md text-sm tracking-wide
       hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms]
       transition-[color,box-shadow] hover:text-teal-500">
           SALIR</button>
