@@ -1,22 +1,24 @@
 
-<div class="min-h-screen h-full static w-screen -z-10 overflow-hidden">
+<div class="min-h-screen h-full  lg:w-screenstatic z-10 overflow-hidden">
   <!-- option nav -->
   <section
     class="flex justify-start items-center my-auto h-20 bg-slate-200"
   >
-    <p class=" font-bold text-slate-700 mx-3">FILTERS: </p>
-    <ng-container *ngFor="let product of listProducts">
-      <button (click)="filter(product.code)"
-      class= "text-sm font-bold
-      w-8 h-8 m-2 border border-gray-800 rounded-md
-      hover:scale-110 hover:bg-slate-700 hover:text-white "
-      [ngClass]="filters.includes(product.code) ? 'bg-teal-700 text-white' : 'text-slate-700'"
-      >{{product.code}}</button>
-    </ng-container>
-    <button (click)="clearFilter()"
-    class= "text-sm font-bold text-slate-700
-    w-8 h-8 m-2 border border-gray-800 rounded-md
-    hover:scale-110 hover:bg-pink-800 hover:text-white ">X</button>
+    <p class=" font-bold text-slate-700 mx-3 hidden lg:block md:block">FILTERS: </p>
+    <div class=" sm: flex-wrap">
+      <ng-container *ngFor="let product of listProducts">
+        <button (click)="filter(product.code)"  
+        class= "text-sm font-bold
+        w-10   h-8 m-2 border bg-slate-700 text-white border-gray-800 rounded-md shadow-sm
+        hover:scale-110 hover:bg-white hover:text-slate-700 "
+        [ngClass]="filters.includes(product.code) ? 'bg-teal-700 text-white' : 'text-slate-700'"
+        >{{product.code}}</button>
+      </ng-container>
+      <button (click)="clearFilter()"
+      class= "text-sm font-bold text-pink-800 shadow-sm
+      w-8 h-8 m-2 border border-pink-800 rounded-md
+      hover:scale-110 hover:bg-pink-800 hover:text-white ">X</button>
+    </div>
  
   <button
     class="text-sm font-bold text-white h-fit w-32  rounded bg-orange-400 hover:bg-orange-700 absolute top-6 p-1 shadow-md right-4"
