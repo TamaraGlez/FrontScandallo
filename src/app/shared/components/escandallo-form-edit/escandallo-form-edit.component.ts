@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IEscandallo, IEscandalloDB } from 'src/app/interfaces/i-escandallos';
+import { IEscandallo, IEscandalloDB } from 'src/app/shared/interfaces/i-escandallos';
 import { Idefects } from '../../interfaces/idefects';
 import { Iproducts } from '../../interfaces/iproducts';
 import { ApiService } from '../../services/api.service';
