@@ -3,6 +3,8 @@ import { Iproducts } from 'src/app/shared/interfaces/iproducts';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { Iproviders } from 'src/app/shared/interfaces/iproviders';
 import { Ivariety } from 'src/app/shared/interfaces/ivariety';
+import { Iusers } from 'src/app/shared/interfaces/iusers';
+import { Iwarehouses } from 'src/app/shared/interfaces/iwarehouses';
 
 @Component({
   selector: 'app-configure',
@@ -13,6 +15,8 @@ export class ConfigureComponent implements OnInit {
   public listProducts!: Iproducts[]
   public listVariety!: Ivariety[]
   public listProviders!: Iproviders[]
+  public listUsers!: Iusers[]
+  public listWarehouses!: Iwarehouses[]
 
   constructor(private api: ApiService) {}
 
@@ -30,6 +34,17 @@ export class ConfigureComponent implements OnInit {
       this.listProviders = [...results];
       console.log(this.listProviders);
     });
+
+    this.api.getAllUsers().subscribe((results: any) => {
+      this.listUsers = [...results];
+      console.log(this.listUsers);
+    });
+
+    this.api.getAllWarehouses().subscribe((results: any) => {
+      this.listWarehouses = [...results];
+      console.log(this.listWarehouses);
+    });
+
 
   }
 }
