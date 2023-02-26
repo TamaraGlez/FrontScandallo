@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit  } from '@angular/core';
-import { IEscandallo } from 'src/app/interfaces/i-escandallos';
+import { IEscandallo } from 'src/app/shared/interfaces/i-escandallos';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -12,11 +12,11 @@ export class PopupComponent implements OnInit{
   @Input() public popupInfo!: any
   // @Output() toggleEvent = new EventEmitter()
   // @Output() itemDeleted = new EventEmitter()
-  
+
   constructor( public api: ApiService){}
 
   ngOnInit(): void {
-    
+
   }
 
 

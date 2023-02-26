@@ -10,19 +10,21 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AuthService } from './shared/services/auth.service';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    FooterComponent,
+    FooterComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule, 
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule
-    
+
   ],
   providers: [ApiService, AuthService],
   bootstrap: [AppComponent]
