@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd } from '@angular/router';
-import { IEscandallo } from 'src/app/shared/interfaces/i-escandallos';
+import { IEscandallo, IEscandalloDB } from 'src/app/shared/interfaces/i-escandallos';
 import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  public listEscandallos!: IEscandallo[];
-  public listFiltered!: IEscandallo[];
+  public listEscandallos!: IEscandalloDB[];
+  public listFiltered!: IEscandalloDB[];
   public listProducts: any[] = []
   public filters: string[] = []
 
@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
     title: 'Eliminar',
     body: 'Estas seguro de querer eliminarlo?',
     action: (id: string) => {
-        this.api.deleteEscandallo(id).subscribe((data: IEscandallo) => {
+        this.api.deleteEscandallo(id).subscribe((data: IEscandalloDB) => {
           console.log("ESCANDALLO BORRADO => ", data);
         })
       this.listFiltered = this.listEscandallos?.filter( escandallo => escandallo._id !== id )
@@ -37,33 +37,11 @@ export class DashboardComponent implements OnInit {
 
   constructor(private api: ApiService) {}
 
-  media(array: number[]): any {
-    let media =
-      array.reduce((accumulator: number, current: number) => {
-        return accumulator + current;
-      }, 0) / array.length;
-
-    return media.toFixed(1);
-  }
-
   ngOnInit(): void {
 
-    this.api.getAllEscandallos().subscribe((data: IEscandallo[]) => {
+    this.api.getAllEscandallos().subscribe((data: IEscandalloDB[]) => {
       this.listEscandallos = [ ...data ];
       this.listFiltered = [ ...data ];
-
-      this.listEscandallos =  this.listEscandallos.map((escandallo) => {
-        let brixArr: number[] = escandallo.data.brix;
-        let firmnessArr: number[] = escandallo.data.firmness;
-        let mediaBrix = this.media(brixArr);
-        let mediaFirm = this.media(firmnessArr);
-
-        return escandallo = {
-          ...escandallo,
-          MediaBrix: mediaBrix,
-          MediaFirmness: mediaFirm,
-        };
-      });
       console.log(this.listEscandallos);
 
 
@@ -99,7 +77,7 @@ export class DashboardComponent implements OnInit {
     this.listFiltered = this.listEscandallos
   }
 
-  openModal(escandallo:IEscandallo){
+  openModal(escandallo:IEscandalloDB){
     this.popupDelete.isActive = true
     this.popupDelete.info = {
       _id: escandallo._id,
