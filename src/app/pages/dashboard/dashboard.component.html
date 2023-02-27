@@ -1,40 +1,34 @@
-
-<div class="min-h-screen h-full  lg:w-screenstatic z-10 overflow-hidden">
+<div class="min-h-screen h-full w-screen lg:w-screenstatic z-10 overflow-hidden mb-40">
   <!-- option nav -->
-  <section
-    class="flex justify-start items-center my-auto h-20 bg-slate-200"
-  >
-    <p class=" font-bold text-slate-700 mx-3 hidden lg:block md:block">FILTERS: </p>
-    <div class=" sm: flex-wrap">
-      <ng-container *ngFor="let product of listProducts">
-        <button (click)="filter(product.code)"  
-        class= "text-sm font-bold
-        w-10   h-8 m-2 border bg-slate-700 text-white border-gray-800 rounded-md shadow-sm
+  <section class=" pl-8 pt-4 flex flex-col md:flex-row  justify-start my-auto h-36 bg-slate-200">
+    <div class="filter">
+      <p class=" font-bold text-slate-700 mx-3 hidden lg:block md:block">FILTERS: </p>
+      <div class="w-56 mt-4 flex flex-wrap gap-1 md:mr-44">
+        <ng-container *ngFor="let product of listProducts">
+          <button (click)="filter(product.code)" class="text-sm font-bold
+        w-10   h-8 border bg-slate-700 text-white border-gray-800 rounded-md shadow-sm
         hover:scale-110 hover:bg-white hover:text-slate-700 "
-        [ngClass]="filters.includes(product.code) ? 'bg-teal-700 text-white' : 'text-slate-700'"
-        >{{product.code}}</button>
-      </ng-container>
-      <button (click)="clearFilter()"
-      class= "text-sm font-bold text-pink-800 shadow-sm
-      w-8 h-8 m-2 border border-pink-800 rounded-md
+            [ngClass]="filters.includes(product.code) ? 'bg-teal-700 text-white' : 'text-slate-700'">{{product.code}}</button>
+        </ng-container>
+        <button (click)="clearFilter()" class="text-sm font-bold text-pink-800 shadow-sm
+      w-10 h-8 border border-pink-800 rounded-md
       hover:scale-110 hover:bg-pink-800 hover:text-white ">X</button>
+      </div>
+
+
     </div>
- 
-  <button
-    class="text-sm font-bold text-white h-fit w-32  rounded bg-orange-400 hover:bg-orange-700 absolute top-6 p-1 shadow-md right-4"
-    routerLink="nuevo"
-  >
-    NUEVO ESCANDALLO
-  </button>
-</section>
+    <button *ngIf="auth.getUser().rol !== 'reader'"
+      class="text-xs  md:ml-40  md:text-sm lg:fixed lg:right-10 font-bold text-white h-fit w-32 mt-2 rounded bg-orange-400 hover:bg-orange-700 p-1 shadow-md right-4"
+      routerLink="nuevo">
+      NUEVO ESCANDALLO
+    </button>
+
+
+  </section>
 
   <!-- modal -->
   <ng-template [ngIf]="popupDelete.isActive">
-    <app-popup
-    [popupInfo]="popupDelete"
-    class="absolute top-1/4 right-1/4"
-
-    ></app-popup>
+    <app-popup [popupInfo]="popupDelete" class="absolute top-1/4 right-1/4 mx-auto"></app-popup>
   </ng-template>
 
 
@@ -43,9 +37,7 @@
     <ng-container *ngFor="let escandallo of listFiltered">
       <!-- card item -->
       <div class="w-52 aspect-2/3 bg-white border p-1 pb-4 rounded shadow-md">
-        <div
-          class="pt-2 rounded"
-          [ngClass]="
+        <div class="pt-2 rounded" [ngClass]="
             escandallo.qualityIndicator === 'green'
               ? 'bg-green-600'
               : escandallo.qualityIndicator === 'yellow'
@@ -53,8 +45,7 @@
               : escandallo.qualityIndicator === 'red'
               ? 'bg-red-800'
               : 'bg-gray-600'
-          "
-        ></div>
+          "></div>
         <!-- header -->
         <div class="pl-2 my-2 h-14">
           <h2 class="text-md font-bold">
@@ -105,91 +96,47 @@
         </div>
 
         <!-- options btns -->
-        <div
-          class="flex justify-evenly text-xs h-12 pt-2 text-slate-400 text-center border-t"
-        >
-          <a
-            routerLink="{{ escandallo._id }}"
-            class="aspect-square hover:text-slate-800 hover:scale-105 hover:cursor-pointer"
-          >
-            <svg
-              fill="currentColor"
-              class="m-auto w-5"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 32 32"
-            >
+        <div class="flex justify-evenly text-xs h-12 pt-2 text-slate-400 text-center border-t">
+          <a class="aspect-square hover:text-slate-800 hover:scale-105 hover:cursor-pointer">
+            <svg fill="currentColor" class="m-auto w-5" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24"
+              height="24" viewBox="0 0 32 32">
               <path
-                d="M16 6c-6.979 0-13.028 4.064-16 10 2.972 5.936 9.021 10 16 10s13.027-4.064 16-10c-2.972-5.936-9.021-10-16-10zM23.889 11.303c1.88 1.199 3.473 2.805 4.67 4.697-1.197 1.891-2.79 3.498-4.67 4.697-2.362 1.507-5.090 2.303-7.889 2.303s-5.527-0.796-7.889-2.303c-1.88-1.199-3.473-2.805-4.67-4.697 1.197-1.891 2.79-3.498 4.67-4.697 0.122-0.078 0.246-0.154 0.371-0.228-0.311 0.854-0.482 1.776-0.482 2.737 0 4.418 3.582 8 8 8s8-3.582 8-8c0-0.962-0.17-1.883-0.482-2.737 0.124 0.074 0.248 0.15 0.371 0.228v0zM16 13c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z"
-              ></path>
+                d="M16 6c-6.979 0-13.028 4.064-16 10 2.972 5.936 9.021 10 16 10s13.027-4.064 16-10c-2.972-5.936-9.021-10-16-10zM23.889 11.303c1.88 1.199 3.473 2.805 4.67 4.697-1.197 1.891-2.79 3.498-4.67 4.697-2.362 1.507-5.090 2.303-7.889 2.303s-5.527-0.796-7.889-2.303c-1.88-1.199-3.473-2.805-4.67-4.697 1.197-1.891 2.79-3.498 4.67-4.697 0.122-0.078 0.246-0.154 0.371-0.228-0.311 0.854-0.482 1.776-0.482 2.737 0 4.418 3.582 8 8 8s8-3.582 8-8c0-0.962-0.17-1.883-0.482-2.737 0.124 0.074 0.248 0.15 0.371 0.228v0zM16 13c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z">
+              </path>
               <title class="">Ver</title>
             </svg>
             <p class="leading-3">Ver</p>
           </a>
-          <a
-            routerLink="edit/{{ escandallo._id }}"
-            class="aspect-square hover:text-slate-800 hover:scale-105 hover:cursor-pointer"
-          >
-            <svg
-              fill="currentColor"
-              class="m-auto w-5"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 32 32"
-            >
+          <a *ngIf="auth.getUser().rol !== 'reader'" routerLink="edit/{{ escandallo._id }}"
+            class="aspect-square hover:text-slate-800 hover:scale-105 hover:cursor-pointer">
+            <svg fill="currentColor" class="m-auto w-5" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24"
+              height="24" viewBox="0 0 32 32">
               <path
-                d="M27 0c2.761 0 5 2.239 5 5 0 1.126-0.372 2.164-1 3l-2 2-7-7 2-2c0.836-0.628 1.874-1 3-1zM2 23l-2 9 9-2 18.5-18.5-7-7-18.5 18.5zM22.362 11.362l-14 14-1.724-1.724 14-14 1.724 1.724z"
-              ></path>
+                d="M27 0c2.761 0 5 2.239 5 5 0 1.126-0.372 2.164-1 3l-2 2-7-7 2-2c0.836-0.628 1.874-1 3-1zM2 23l-2 9 9-2 18.5-18.5-7-7-18.5 18.5zM22.362 11.362l-14 14-1.724-1.724 14-14 1.724 1.724z">
+              </path>
               <title>Editar</title>
             </svg>
             <p class="leading-3">Editar</p>
           </a>
-          <div
-            (click)="openModal(escandallo)"
-            class="aspect-square hover:text-slate-800 hover:scale-105 hover:cursor-pointer"
-          >
-            <svg
-              fill="currentColor"
-              class="m-auto w-5"
-              version="1.1"
-              id="Layer_1"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              viewBox="0 0 512 512"
-              xml:space="preserve"
-            >
+          <div *ngIf="auth.getUser().rol !== 'reader'" (click)="openModal(escandallo)"
+            class="aspect-square hover:text-slate-800 hover:scale-105 hover:cursor-pointer">
+            <svg fill="currentColor" class="m-auto w-5" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+              width="24" height="24" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
+              xml:space="preserve">
               <g>
                 <g>
-                  <rect
-                    x="170.667"
-                    y="178.424"
-                    width="46.545"
-                    height="232.727"
-                  />
+                  <rect x="170.667" y="178.424" width="46.545" height="232.727" />
                 </g>
               </g>
               <g>
                 <g>
-                  <rect
-                    x="294.788"
-                    y="178.424"
-                    width="46.545"
-                    height="232.727"
-                  />
+                  <rect x="294.788" y="178.424" width="46.545" height="232.727" />
                 </g>
               </g>
               <g>
                 <g>
-                  <path
-                    d="M341.333,77.576V0H170.667v77.576H23.273v46.545h38.788V512h387.879V124.121h38.788V77.576H341.333z M217.212,46.545
-               h77.576v31.03h-77.576V46.545z M403.394,465.455H108.606V124.121h294.788V465.455z"
-                  />
+                  <path d="M341.333,77.576V0H170.667v77.576H23.273v46.545h38.788V512h387.879V124.121h38.788V77.576H341.333z M217.212,46.545
+               h77.576v31.03h-77.576V46.545z M403.394,465.455H108.606V124.121h294.788V465.455z" />
                 </g>
               </g>
               <title>Borrar</title>

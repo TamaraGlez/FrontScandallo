@@ -1,6 +1,6 @@
-<nav class="min-h-screen h-full">
+<nav class="min-h-screen h-full flex-col  text-gray-400 bg-gray-900 ">
 
-  <div class="flex flex-col items-center h-full overflow-hidden text-gray-400 bg-gray-900 shadow-md">
+  <div class="flex flex-col items-center h-full overflow-hidden shadow-md">
 
     <a class="flex items-center w-full px-3 mt-3" href="#">
       <svg class="w-8 h-8 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -33,9 +33,12 @@
         </a>
 
 
-        <a class="relative flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-teal-500" routerLink="/home">
-          <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+        <a class="relative flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-teal-500"
+          routerLink="/home/sala">
+          <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
 
           </svg>
           <span class="ml-2 text-sm font-medium hidden md:flex">Chat</span>
@@ -43,14 +46,18 @@
         </a>
 
 
-        <a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-teal-500" routerLink="/form">
-          <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+        <a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-teal-500"
+          routerLink="/guide">
+          <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
           </svg>
           <span class="ml-2 text-sm font-medium hidden md:flex">Guia de Usuario</span>
         </a>
 
-        <a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-teal-500"
+        <a *ngIf="auth.getUser().rol !== 'reader'"
+          class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-teal-500"
           routerLink="/configure">
           <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
@@ -61,29 +68,40 @@
         </a>
 
       </div>
+    </div>
+    <div class=" items-center w-full border-t border-gray-700 justify-end mt-52">
 
-      <div class="flex flex-col items-center w-full mt-32 border-t border-gray-700">
+      <a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-teal-500"
+        routerLink="/login">
+        <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span *ngIf="auth.getToken()" class="ml-2 text-sm font-medium hidden md:flex">{{auth.getUser().userName}}</span>
+      </a>
 
-        <a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-teal-500"
-          routerLink="/login">
-          <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <span *ngIf="auth.getToken()"
-            class="ml-2 text-sm font-medium hidden md:flex">{{auth.getUser().userName}}</span>
-        </a>
-
-        <button type="button" *ngIf="auth.getToken()" (click)="logOut()" class="mt-8 mx-10 bg-teal-500 text-gray-900 p-2 font-bold rounded-md text-sm tracking-wide
+      <!-- <a  *ngIf="auth.getToken()" (click)="logOut()" class="md:mt-8 md:mx-10 bg-teal-500 text-gray-900 p-2 font-bold rounded-md text-sm tracking-wide
       hover:shadow-[inset_20rem_0_0_0] hover:shadow-gray-500 duration-[400ms,700ms]
-      transition-[color,box-shadow] hover:text-teal-500">
-          SALIR</button>
-      </div>
-
-
-
-
+      transition-[color,box-shadow] hover:text-teal-500"> -->
+      <img class="ml-4 pr-1 mx-auto invert w-5 opacity-60" *ngIf="auth.getToken()" (click)="logOut()"
+        src="http://cdn.onlinewebfonts.com/svg/img_119401.png" alt="">
+      <!-- </a> -->
+      <!-- <a href="#" class=" mb-2 text-gray-400 hover:text-teal-500">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+            clip-rule="evenodd" />
+        </svg>
+      </a> -->
     </div>
   </div>
+
+   
+
+
+
+
+ 
+
 </nav>

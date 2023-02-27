@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationEnd } from '@angular/router';
 import { IEscandallo, IEscandalloDB } from 'src/app/shared/interfaces/i-escandallos';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -35,7 +36,7 @@ export class DashboardComponent implements OnInit {
     cancel: () => {this.popupDelete.isActive = false}
   }
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, public auth: AuthService) {}
 
   ngOnInit(): void {
 

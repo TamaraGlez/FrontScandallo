@@ -1,22 +1,12 @@
+<div class="flex container w-screen h-screen">
+  <app-nav class="h-screen"></app-nav>
 
-<div class="flex container w-screen">
+  <div class="flex container">
 
+  <div class=" w-screen">
 
-<div class="flex container">
+      <router-outlet></router-outlet>
+    </div>
 
-  <app-nav></app-nav>
-  <router-outlet></router-outlet>
-
-  
-  <div class="flex w-screen">
-    <app-nav class="w-10 md:w-28 lg:w-32"></app-nav>
-    <router-outlet class="" ></router-outlet>
+    <!-- <app-footer class="w-full h-10"></app-footer> -->
   </div>
-  <!-- <div class=" w-screen">
-    
-
-  </div> -->
- 
-  <app-footer class="w-full h-10"></app-footer>
-</div>
-

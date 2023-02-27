@@ -1,14 +1,14 @@
-<section #popup class="w-64 h-40 border border-red-600 bg-slate-100 rounded flex flex-col justify-center items-center">
-  <div>
+<section #popup class=" w-64 h-40 border border-slate-900 bg-slate-100 rounded flex flex-col  items-center shadow-2xl ">
+  <div class="bg-slate-900 w-full text-white text-center">
     <!-- titulo -->
     <!-- <h2>Eliminar {{info.ref}} - {{info.product}}</h2> -->
     <h2>{{popupInfo.title}} {{popupInfo.info.name}} - {{popupInfo.info.ref}}</h2>
   </div>
-  <div>
+  <div class="mt-8">
     <!-- body -->
     <p>{{popupInfo.body}}</p>
   </div>
-  <div class="flex gap-3">
+  <div class="flex gap-3 mt-4">
     <button 
     class="bg-red-600 text-white rounded w-24 hover:bg-red-900"
     (click)="popupInfo.cancel()"

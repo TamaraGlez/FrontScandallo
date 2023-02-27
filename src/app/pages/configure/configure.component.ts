@@ -3,8 +3,9 @@ import { Iproducts } from 'src/app/shared/interfaces/iproducts';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { Iproviders } from 'src/app/shared/interfaces/iproviders';
 import { Ivariety } from 'src/app/shared/interfaces/ivariety';
-import { Iusers } from 'src/app/shared/interfaces/iusers';
+import { IUserDB, Iusers } from 'src/app/shared/interfaces/iusers';
 import { Iwarehouses } from 'src/app/shared/interfaces/iwarehouses';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-configure',
@@ -17,8 +18,9 @@ export class ConfigureComponent implements OnInit {
   public listProviders!: Iproviders[]
   public listUsers!: Iusers[]
   public listWarehouses!: Iwarehouses[]
+  public rol: string =''
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, public auth: AuthService) {}
 
   ngOnInit(): void {
     this.api.getAllProducts().subscribe((results: any) => {
@@ -45,6 +47,11 @@ export class ConfigureComponent implements OnInit {
       console.log(this.listWarehouses);
     });
 
+    // this.rol = localStorage.getItem('user');
+    
+
 
   }
+
+
 }

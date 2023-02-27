@@ -1,15 +1,18 @@
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
 
-<div class="flex-1 overflow-auto bg-blue-800">
+<div class="flex-col overflow-auto bg-slate-400 w-full justify-between h-screen">
 
-    <div *ngFor="let message of messageList" class="p-2 text-white">
-        <li>
-            {{message}}
-        </li>  
-    </div>
-
+  <div class="p-2 bg-white text-slate-700 h-5/6   rounded-md m-4">
+    <p *ngFor="let message of messageList">
+      {{message}}
+    </p>
+  </div>
+  <div class="fixed bottom-8 pl-4">
     <input class="p-2 border border-gray-500 rounded-md" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" />
 
-    <button class="p-2 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-md" (click)="sendMessage()">Send Message</button>
+    <button class="p-2 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-md" (click)="sendMessage()">Send
+      Message</button>
+
+  </div>
 
 </div>

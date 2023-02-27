@@ -1,5 +1,5 @@
-<section class="w-screen border p-5">
-  <h1>ESCANDALLO DATOS</h1>
+<section class="w-screen border p-5 text-white">
+  <h1 class="text-lg font-bold">ESCANDALLO DATOS</h1>
   <!-- <ng-template [ngIf]="escandalloToEdit"> -->
   <div></div>
 
@@ -17,60 +17,38 @@
       <div>
         <div class="flex gap-3">
           <p>Brix</p>
-          <input
-            type="text"
-            inputmode="numeric"
-            placeholder="nuevo brix"
-            class="w-24 p-2 rounded"
-            [(ngModel)]="dataInputBrix"
-            [ngModelOptions]="{ standalone: true }"
-            (keydown.enter)="save('brix', $event)"
-          />
+          <input type="text" inputmode="numeric" placeholder="nuevo brix" class="text-slate-800 w-24 p-2 rounded"
+            [(ngModel)]="dataInputBrix" [ngModelOptions]="{ standalone: true }"
+            (keydown.enter)="save('brix', $event)" />
         </div>
         <div class="font-semibold py-2 flex gap-x-3 w-9/12 p-2">
           <p>Media Brix:</p>
-          <input
-            type="number"
-            placeholder="-- , -"
-            value="{{ escandalloToEdit.MediaBrix }}"
-            class="w-12"
-            formControlName="MediaBrix"
-          />
+          <input type="number" placeholder="-- , -" value="{{ escandalloToEdit.MediaBrix }}" class="text-slate-800 rounded text-center w-12"
+            formControlName="MediaBrix" />
 
           <!-- <p>
             {{
               escandalloToEdit.MediaBrix ? escandalloToEdit.MediaBrix : "-- , -"
             }}
           </p> -->
-          <button
-            type="button"
-            (click)="activeEdit('brix')"
-            class="py-1 px-3 border rounded"
-          >
+          <button type="button" (click)="activeEdit('brix')"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Edit
           </button>
         </div>
-        <div class="flex w-9/12 p-2 bg-slate-300 rounded-md overflow-x-scroll">
+        <div class="flex flex max-w-md p-2 bg-slate-300 rounded-md overflow-x-scroll">
           <ng-template [ngIf]="escandalloToEdit.data.brix.length > 0">
-            <ng-container
-              *ngFor="
+            <ng-container *ngFor="
                 let data of escandalloToEdit.data.brix;
                 let indexOfData = index
-              "
-            >
+              ">
               <div class="grid w-10 text-center border-r border-r-slate-600">
-                <span class="text-slate-600 text-sm">{{
+                <span class="text-white text-sm">{{
                   indexOfData + 1
                 }}</span>
-                <span *ngIf="!editIsActive.brix">{{ data }}</span>
-                <input
-                  *ngIf="editIsActive.brix"
-                  type="text"
-                  inputmode="numeric"
-                  value="{{ data }}"
-                  class="w-9 text-center rounded"
-                  (keydown.enter)="editData($event, indexOfData, 'brix')"
-                />
+                <span class="text-slate-700" *ngIf="!editIsActive.brix">{{ data }}</span>
+                <input *ngIf="editIsActive.brix" type="text" inputmode="numeric" value="{{ data }}"
+                  class="w-9 text-center rounded text-slate-700" (keydown.enter)="editData($event, indexOfData, 'brix')" />
               </div>
             </ng-container>
           </ng-template>
@@ -81,54 +59,31 @@
       <div class="mt-5">
         <div class="flex gap-3">
           <p>Penetromia</p>
-          <input
-            type="text"
-            inputmode="numeric"
-            placeholder="nuevo Pn"
-            class="w-24 p-2 rounded"
-            [(ngModel)]="dataInputPn"
-            [ngModelOptions]="{ standalone: true }"
-            (keydown.enter)="save('pn', $event)"
-          />
+          <input type="text" inputmode="numeric" placeholder="nuevo Pn" class="text-slate-800 w-24 p-2 rounded"
+            [(ngModel)]="dataInputPn" [ngModelOptions]="{ standalone: true }" (keydown.enter)="save('pn', $event)" />
         </div>
         <div class="font-semibold py-2 flex gap-x-3 w-9/12 p-2">
           <p>Media Pn:</p>
-          <input
-            type="number"
-            placeholder="-- , -"
-            value="{{ calcMedia(escandalloToEdit.data.firmness) }}"
-            class="w-12"
-            formControlName="MediaFirmness"
-          />
+          <input type="number" placeholder="-- , -" value="{{ calcMedia(escandalloToEdit.data.firmness) }}" class="text-slate-800 rounded text-center w-12"
+            formControlName="MediaFirmness" />
           <!-- {{
               escandalloToEdit.MediaFirmness ? escandalloToEdit.MediaFirmness : "-- , -"
             }} -->
-          <button
-            type="button"
-            (click)="activeEdit('pn')"
-            class="py-1 px-3 border rounded"
-          >
+          <button type="button" (click)="activeEdit('pn')"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Edit
           </button>
         </div>
-        <div class="flex w-9/12 p-2 bg-slate-300 rounded-md overflow-x-scroll">
-          <ng-container
-            *ngFor="
+        <div class="flex max-w-md p-2 bg-slate-300 rounded-md overflow-x-scroll">
+          <ng-container *ngFor="
               let data of escandalloToEdit.data.firmness;
               let indexOfData = index
-            "
-          >
-            <div class="grid w-10 text-center border-r border-r-slate-600">
-              <span class="text-slate-600 text-sm">{{ indexOfData + 1 }}</span>
-              <span *ngIf="!editIsActive.pn">{{ data }}</span>
-              <input
-                *ngIf="editIsActive.pn"
-                type="text"
-                inputmode="numeric"
-                value="{{ data }}"
-                class="w-9 text-center rounded"
-                (keydown.enter)="editData($event, indexOfData, 'pn')"
-              />
+            ">
+            <div class="grid w-10 text-center border-r border-r-slate-600 ">
+              <span class="text-whitetext-sm">{{ indexOfData + 1 }}</span>
+              <span class="text-slate-700" *ngIf="!editIsActive.pn">{{ data }}</span>
+              <input *ngIf="editIsActive.pn" type="text" inputmode="numeric" value="{{ data }}"
+                class="w-9 text-center text-slate-700 rounded" (keydown.enter)="editData($event, indexOfData, 'pn')" />
             </div>
           </ng-container>
         </div>
@@ -138,46 +93,25 @@
       <div class="mt-5">
         <div formGroupName="data">
           <p>Calibre 1:</p>
-          <div class="flex gap-5">
+          <div class="flex flex-col md:flex gap-5">
             <!-- tabs -->
-            <div
-              class="flex rounded-xl bg-gray-200 text-sm font-semibold w-fit"
-              x-data="cal1"
-            >
+            <div class="flex rounded-xl bg-gray-400 text-sm font-semibold w-fit" x-data="cal1">
               <ng-container *ngFor="let cal of calibers">
                 <div>
-                  <input
-                    formControlName="caliberRef1"
-                    name="caliberRef1"
-                    type="radio"
-                    class="peer hidden"
-                    id="1{{ cal }}"
-                    value="{{ cal }}"
-                    checked
-                  />
-                  <label
-                    for="1{{ cal }}"
-                    class="block cursor-pointer select-none rounded-xl p-2 text-center w-10 peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
-                    >{{ cal }}</label
-                  >
+                  <input formControlName="caliberRef1" name="caliberRef1" type="radio" class="peer hidden"
+                    id="1{{ cal }}" value="{{ cal }}" checked />
+                  <label for="1{{ cal }}"
+                    class="block cursor-pointer select-none rounded-xl p-2 text-center w-10 peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white">{{ cal }}</label>
                 </div>
               </ng-container>
             </div>
-            <input
-              type="range"
-              id="cal1"
-              max="100"
-              min="0"
-              step="10"
-              value="{{
+            <div>
+              <input type="range" id="cal1" max="100" min="0" step="10" value="{{
                 escandalloToEdit.data.percentage1
                   ? escandalloToEdit.data.percentage1
                   : 50
-              }}"
-              oninput="this.nextElementSibling.value = this.value"
-              formControlName="percentage1"
-              name="percentage1"
-            />
+              }}" oninput="this.nextElementSibling.value = this.value" formControlName="percentage1"
+              name="percentage1" />
             <output>
               {{
                 escandalloToEdit.data.percentage1
@@ -185,47 +119,28 @@
                   : 50
               }}
             </output>
+            </div>
           </div>
 
           <p>Calibre 2:</p>
-          <div class="flex gap-5">
+          <div class="flex flex-col md:flex gap-5">
             <!-- tabs -->
-            <div
-              class="flex rounded-xl bg-gray-200 text-sm font-semibold w-fit"
-            >
+            <div class="flex rounded-xl bg-gray-400 text-sm font-semibold w-fit">
               <ng-container *ngFor="let cal of calibers">
                 <div>
-                  <input
-                    formControlName="caliberRef2"
-                    type="radio"
-                    name="caliberRef2"
-                    value="{{ cal }}"
-                    class="peer hidden"
-                    id="2{{ cal }}"
-                  />
-                  <label
-                    for="2{{ cal }}"
-                    class="block cursor-pointer select-none rounded-xl p-2 text-center w-10 peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
-                    >{{ cal }}</label
-                  >
+                  <input formControlName="caliberRef2" type="radio" name="caliberRef2" value="{{ cal }}"
+                    class="peer hidden" id="2{{ cal }}" />
+                  <label for="2{{ cal }}"
+                    class="block cursor-pointer select-none rounded-xl p-2 text-center w-10 peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white">{{ cal }}</label>
                 </div>
               </ng-container>
             </div>
-            <input
-              type="range"
-              name="percentage2"
-              id="cal1"
-              max="100"
-              min="0"
-              step="10"
-              value="{{
+            <div>
+              <input type="range" name="percentage2" id="cal1" max="100" min="0" step="10" value="{{
                 escandalloToEdit.data.percentage2
                   ? escandalloToEdit.data.percentage2
                   : 50
-              }}"
-              oninput="this.nextElementSibling.value = this.value"
-              formControlName="percentage2"
-            />
+              }}" oninput="this.nextElementSibling.value = this.value" formControlName="percentage2" />
             <output>
               {{
                 escandalloToEdit.data.percentage2
@@ -233,79 +148,69 @@
                   : 50
               }}
             </output>
+            </div>
           </div>
         </div>
 
         <!-- Defectos -->
         <div class="mt-5">
           <p>Defectos:</p>
-          <select
-            name="defects"
-            [(ngModel)]="selecteDefect"
-            [ngModelOptions]="{ standalone: true }"
-          >
-            <option value="">Selecciona del listado</option>
-            <option
-              *ngFor="let defect of listDefects"
-              value="{{ defect.title }}"
-            >
-              {{ defect.title }}
-            </option>
-          </select>
-          <div>
-            <button
-              type="button"
-              (click)="saveSelecction()"
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            >
-              Seleccionar
-            </button>
+          <div class="flex">
+            <select class="text-slate-800" name="defects" [(ngModel)]="selecteDefect" [ngModelOptions]="{ standalone: true }">
+              <option value="">Selecciona del listado</option>
+              <option *ngFor="let defect of listDefects" value="{{ defect.title }}">
+                {{ defect.title }}
+              </option>
+  
+            </select>
+            <button type="button" (click)="saveSelecction()"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Seleccionar
+              </button>
+          </div>
+          <div class="mt-2">
+            
             <p>Seleccionados:</p>
-            <ul
-              *ngFor="
+            <ul *ngFor="
                 let selection of selecteDefects;
                 let indexOfSelection = index
-              "
-            >
-              <li class="flex flex-row">{{ selection }}</li>
-              <button
-                class="bg-red-500 hover:bg-red-600 text-white font-bold py-0.2 px-2 rounded"
-                (click)="deleteDefect(selection, indexOfSelection)"
-              >
-                X
-              </button>
+              ">
+              <div class="mt-2 flex gap-2 w-fit bg-slate-400 rounded pl-3 "><li class="flex flex-row">{{ selection }}</li>
+                <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-0.2 px-2 rounded"
+                  (click)="deleteDefect(selection, indexOfSelection)">
+                  X
+                </button></div>
             </ul>
           </div>
 
           <!-- Commentarios -->
           <div class="mt-5">
             <p>Observaciones</p>
-            <textarea
-              name="comments"
-              formControlName="comments"
-              id="comments"
-              cols="50"
-              rows="5"
-              placeholder="Otras observaciones"
-              value="{{ escandalloToEdit.comments }}"
-            >
+            <textarea name="comments" formControlName="comments" id="comments" cols="50" rows="5"
+              placeholder="Otras observaciones" value="{{ escandalloToEdit.comments }}">
               {{ escandalloToEdit.comments }}
-              </textarea
-            >
+              </textarea>
           </div>
 
           <!-- Fotos -->
-          <div class="mt-5">
-            <input type="file" capture="environment" accept="image/*" />>
-            <div></div>
+          <div class="mt-3">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Añadir foto</label>
+            <input
+              class="block pr-4 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+              id="file_input" type="file" capture="environment" accept="image/*">
+            <!-- <input type="file" capture="environment" accept="image/*" />>
+            <div class=" "></div> -->
           </div>
 
+
+
           <div class="mt-5 flex gap-4">
-            <button type="button">CANCEL</button>
-            <button type="button" (click)="makeFormValid()">OK</button>
-            <button type="submit" [disabled]="!isFormValid">GUARDAR</button>
-            <p>{{ escandalloForm.valid }}</p>
-            <p>guardar disable: {{ !isFormValid }}</p>
+            <button type="button"
+              class="bg-red-500 hover:bg-red-600 px-2 py-1 rounded-md shadow-md text-white">CANCEL</button>
+            <button type="button" class="bg-yellow-500 px-2 py-1 rounded-md shadow-md text-white hover:bg-yellow-600"
+              (click)="makeFormValid()">OK</button>
+            <button type="submit" class="bg-green-600 px-2 py-1 rounded-md shadow-md text-white hover:bg-green-700"
+              [disabled]="!isFormValid">GUARDAR</button>
           </div>
         </div>
       </div>

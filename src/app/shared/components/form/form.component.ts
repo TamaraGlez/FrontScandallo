@@ -36,7 +36,7 @@ export class FormComponent implements OnInit {
 
         title: ['',[Validators.required]],
         image: ['',],
-        descripcion:['',],
+        description:['',],
         producto: ['',]
 
       });

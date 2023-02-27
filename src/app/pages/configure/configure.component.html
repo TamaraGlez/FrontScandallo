@@ -10,24 +10,11 @@
         <button class="bg-slate-800 px-6 shadow-md rounded-md text-center hover:bg-slate-700 " routerLink="/form/products">+</button>
       </div>
       <div class="flex text-lg" *ngFor="let product of listProducts">
-        <p>{{product.code}}</p>
-        <p>{{product.name}}</p>
+        <p class="w-24">{{product.code}}</p>
+        <p class="w-52">{{product.name}}</p>
         <p>{{product.flesh}}</p>
       </div>
 
-      <div class="flex gap-2 text-lg" *ngFor="let product of listProducts">
-        <p>{{product.code}}</p>
-        <p>{{product.name}}</p>
-        <p>{{product.flesh}}</p>
-      </div>
-
-      <div class="flex gap-2 text-lg" *ngFor="let product of listProducts">
-        <p>{{product.code}}</p>
-        <p>{{product.name}}</p>
-        <p>{{product.flesh}}</p>
-
-
-      </div>
     </div>
     <div class="bg-slate-600 p-4 rounded-md mb-2">
       <div class="w-1/3 flex gap-6 mb-2">
@@ -35,8 +22,8 @@
         <button class="bg-slate-800 px-6 rounded-md text-center hover:bg-slate-700 " routerLink="/form/varieties">+ </button>
       </div>
       <div class="flex gap-2 text-sm" *ngFor="let variety of listVariety">
-        <p>{{variety.name}}</p>
-        <p>{{variety.productRef}}</p>
+        <p class="w-24" >{{variety.name}}</p>
+        <p >{{variety.productRef}}</p>
       </div>
 
     </div>
@@ -50,8 +37,8 @@
       <button class="bg-slate-800 px-6 rounded-md text-center hover:bg-slate-700 " routerLink="/form/providers">+</button>
     </div>
     <div class="flex gap-2" *ngFor="let provider of listProviders">
-      <p>{{provider.name}}</p>
-      <p>{{provider.code}}</p>
+      <p class="w-32">{{provider.name}}</p>
+      <p class="w-52">{{provider.code}}</p>
     </div>
    </div>
 
@@ -59,31 +46,32 @@
 
 
 
-
-   <div class="bg-slate-600 p-4 rounded-md mb-2">
-    <div class="w-1/3 flex gap-6 mb-2">
-      <h3 class="text-xl">Usuarios</h3>
-      <button class="bg-slate-800 px-6 rounded-md text-center hover:bg-slate-700 " routerLink="/form/users">+</button>
+   <ng-template [ngIf]="auth.getUser().rol === 'admin'">
+     <div class="bg-slate-600 p-4 rounded-md mb-2">
+      <div class="w-1/3 flex gap-6 mb-2">
+        <h3 class="text-xl">Usuarios</h3>
+        <button class="bg-slate-800 px-6 rounded-md text-center hover:bg-slate-700 " routerLink="/form/users">+</button>
+      </div>
+      <div class="flex gap-2" *ngFor="let user of listUsers">
+        <p>{{user.userName}}</p>
+        <!-- <p>{{user.password}}</p> -->
+        <p class="w-24">{{user.warehouse}}</p>
+        <p class="w-54">{{user.rol}}</p>
+      </div>
+     </div>
+     
+     <div class="bg-slate-600 p-4 rounded-md mb-2">
+       <div class="w-1/3 flex gap-6 mb-2">
+         <h3 class="text-xl">ALmacenes</h3>
+         <button class="bg-slate-800 px-6 rounded-md text-center hover:bg-slate-700 " routerLink="/form/warehouse">+</button>
+        </div>
+        <div class="flex gap-2" *ngFor="let warehouse of listWarehouses">
+          <p>{{warehouse.name}}</p>
+          <p>{{warehouse.code}}</p>
+        </div>
+      </div>
+    </ng-template>
+      
     </div>
-    <div class="flex gap-2" *ngFor="let user of listUsers">
-      <p>{{user.userName}}</p>
-      <!-- <p>{{user.password}}</p> -->
-      <p>{{user.warehouse}}</p>
-      <p>{{user.rol}}</p>
-    </div>
-   </div>
-
-   <div class="bg-slate-600 p-4 rounded-md mb-2">
-    <div class="w-1/3 flex gap-6 mb-2">
-      <h3 class="text-xl">ALmacenes</h3>
-      <button class="bg-slate-800 px-6 rounded-md text-center hover:bg-slate-700 " routerLink="/form/warehouse">+</button>
-    </div>
-    <div class="flex gap-2" *ngFor="let warehouse of listWarehouses">
-      <p>{{warehouse.name}}</p>
-      <p>{{warehouse.code}}</p>
-    </div>
-   </div>
-
-  </div>
 
 
